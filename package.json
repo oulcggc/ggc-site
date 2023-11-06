@@ -14,6 +14,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
+    "@types/qrcode": "^1.5.4",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.28.0",
@@ -31,6 +32,7 @@
   "dependencies": {
     "@iconify/json": "^2.2.138",
     "newt-client-js": "^3.2.7",
+    "qrcode": "^1.5.3",
     "unplugin-icons": "^0.17.3"
   }
 }
