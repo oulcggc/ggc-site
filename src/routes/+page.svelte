@@ -5,6 +5,7 @@
 	import SectionContent from '$lib/sections/SectionContent.svelte';
 	import SectionPlace from '$lib/sections/SectionPlace.svelte';
 	import SectionContact from '$lib/sections/SectionContact.svelte';
+	import SectionHome from '$lib/sections/SectionHome.svelte';
 </script>
 
 <svelte:head>
@@ -12,18 +13,6 @@
 </svelte:head>
 
 <div class="floating">
-	<ul class="sns">
-		{#each SNS_ACCOUNTS as { link, type }}
-			<li>
-				<a href={link} target="_blank" rel="noopener">
-					<SNSIcon {type} />
-				</a>
-			</li>
-		{/each}
-	</ul>
-</div>
-
-<section id="home">
 	<nav>
 		<ul>
 			<li>
@@ -43,8 +32,19 @@
 			</li>
 		</ul>
 	</nav>
+	<ul class="sns">
+		{#each SNS_ACCOUNTS as { link, type }}
+			<li>
+				<a href={link} target="_blank" rel="noopener">
+					<SNSIcon {type} />
+				</a>
+			</li>
+		{/each}
+	</ul>
+</div>
 
-	<h1>阪大言語サークルGGC</h1>
+<section id="home">
+	<SectionHome />
 </section>
 
 <section id="content">
@@ -63,17 +63,22 @@
 	.floating {
 		position: fixed;
 		top: 0;
+		left: 0;
 		right: 0;
+		bottom: 0;
 		z-index: 100;
 
-		display: grid;
-		place-items: center;
-		justify-content: right;
+		display: flex;
+		justify-content: space-between;
 		padding: 2em;
 	}
 
 	section {
 		height: 100vh;
+	}
+
+	section:not(:first-of-type) {
+		padding: 15em;
 	}
 
 	ul {
