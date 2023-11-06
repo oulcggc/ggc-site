@@ -9,7 +9,7 @@ export interface Post extends Content {
 		fullName: string;
 		slug: string;
 		biography: string;
-		profileImage: Image;
+		profileImage: Image | null;
 	};
 	tags: string[];
 }
