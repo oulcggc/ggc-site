@@ -30,6 +30,9 @@
 				<a href="#home"> ホーム </a>
 			</li>
 			<li>
+				<a href="/blog" target="_blank">ブログ</a>
+			</li>
+			<li>
 				<a href="#content"> 活動詳細 </a>
 			</li>
 			<li>
