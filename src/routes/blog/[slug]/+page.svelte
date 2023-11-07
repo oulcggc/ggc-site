@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AvatarPlaceholder from '$assets/AvatarPlaceholder.svelte';
+	import Avatar from '$lib/ui/Avatar.svelte';
 	import SnsIcon from '$lib/ui/SNSIcon.svelte';
 	import { createFacebookShareURL, createLineShareURL, createTwitterShareURL } from '$lib/util/sns';
 	import type { PageData } from './$types';
@@ -20,13 +20,7 @@
 	<h1>{article.title}</h1>
 	<div class="metadata">
 		<span class="name">{article.author.fullName}</span>
-		<div class="avatar">
-			{#if article.author.profileImage}
-				<img src={article.author.profileImage.src} alt={article.author.profileImage.altText} />
-			{:else}
-				<AvatarPlaceholder />
-			{/if}
-		</div>
+		<Avatar author={article.author} />
 		<span class="date"
 			>{new Intl.DateTimeFormat('ja-JP', {
 				dateStyle: 'long',
@@ -130,14 +124,6 @@
 		grid-area: name;
 		align-self: end;
 		font-weight: bold;
-	}
-
-	.metadata .avatar {
-		grid-area: avatar;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		overflow: hidden;
 	}
 
 	.share {
