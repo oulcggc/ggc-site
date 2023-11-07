@@ -11,33 +11,6 @@
 	export let facility: string;
 	export let building: string;
 
-	onMount(() => {
-		// Select all the anchor tags within the card
-		document.querySelectorAll('a[href]').forEach((anchor) => {
-			// Add click event listener to each anchor
-			anchor.addEventListener('click', (event) => {
-				// Prevent the default anchor click behavior
-				event.preventDefault();
-
-				// Extract the hash (ID) from the clicked anchor's href attribute
-				const hash = anchor.getAttribute('href');
-				if (hash && hash.startsWith('#')) {
-					// Use the hash to find the corresponding card element
-					const card = document.querySelector(hash);
-					if (card) {
-						// Scroll to the card element
-						card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-						// Focus on the photo link within the card
-						if (photoLink) {
-							photoLink.focus();
-						}
-					}
-				}
-			});
-		});
-	});
-
 	let photoLink: HTMLAnchorElement;
 </script>
 

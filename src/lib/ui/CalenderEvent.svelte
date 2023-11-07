@@ -1,0 +1,112 @@
+<script lang="ts">
+	import RiBuilding2Line from '~icons/ri/building-2-line';
+	import RiQuestionLine from '~icons/ri/question-line';
+	import RiTimeLine from '~icons/ri/time-line';
+	export let name: string;
+	export let place: string;
+	export let href: string;
+	export let detail: string;
+	export let time: string;
+	export let color: 'r' | 'g' | 'b';
+</script>
+
+<div class="event" data-color={color}>
+	<h3>
+		{name}
+		<!-- TODO: 詳細 as tooltip -->
+		<button
+			title="詳細"
+			on:click={() => {
+				alert(detail);
+			}}
+		>
+			<RiQuestionLine />
+		</button>
+	</h3>
+
+	<RiTimeLine height="1em" />
+	<span>
+		{time}
+	</span>
+
+	<!-- TODO: Same color across PlaceCard -->
+
+	<RiBuilding2Line height="1em" />
+	<a
+		{href}
+		title="活動場所"
+		class="text"
+		on:click|preventDefault={() => {
+			const link = document.querySelector(href);
+			if (link) {
+				link.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				const photo = document.querySelector(href + ' .photo');
+				if (photo && photo instanceof HTMLAnchorElement) {
+					photo.focus();
+				}
+				return false;
+			}
+		}}
+	>
+		{place}
+	</a>
+</div>
+
+<style>
+	.event[data-color='g'] {
+		--color-bg: #4fc784;
+		--color-bg-trans: #4fc78433;
+	}
+
+	.event[data-color='b'] {
+		--color-bg: #75a8ce;
+		--color-bg-trans: #75a8ce33;
+	}
+
+	.event[data-color='r'] {
+		--color-bg: #c74f4f;
+		--color-bg-trans: #c74f4f33;
+	}
+
+	.event {
+		border-left: 3px solid var(--color-bg);
+		background: var(--color-bg-trans);
+		padding: 0.2em 0.5em;
+		border-top-right-radius: 0.25em;
+		border-bottom-right-radius: 0.25em;
+
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		gap: 0.25em;
+	}
+
+	h3 {
+		grid-column: 1 / -1;
+
+		margin: 0;
+		font-size: 1em;
+		vertical-align: middle;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.25em;
+	}
+
+	button {
+		background: none;
+		border: none;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+		font-size: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: color 0.2s ease-in-out;
+	}
+
+	button:hover {
+		color: var(--color-bg);
+	}
+</style>

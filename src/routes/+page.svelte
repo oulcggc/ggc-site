@@ -25,6 +25,8 @@
 		<li>
 			<a href="#introduction"> サークル紹介 </a>
 		</li>
+		<li>
+			<a href="#content"> 活動内容 </a>
 		</li>
 		<li>
 			<a href="#place"> 活動拠点 </a>

@@ -1,3 +1,31 @@
 * {
 	box-sizing: border-box;
 }
+
+a.text {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.2em;
+	text-decoration: none;
+	color: #184164;
+	position: relative;
+	transition: color 0.2s ease-in-out;
+	width: fit-content;
+	position: relative;
+}
+
+a.text::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	background: currentColor;
+	transition: width 0.3s ease-in-out;
+}
+
+a.text:hover::after {
+	width: 100%;
+}
