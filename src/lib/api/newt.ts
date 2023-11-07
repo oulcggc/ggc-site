@@ -1,5 +1,6 @@
 import { createClient, type Content, type Contents, type Image } from 'newt-client-js';
 import { PRIVATE_NEWT_CDN_TOKEN, PRIVATE_NEWT_SPACE_UID } from '$env/static/private';
+import fetchAdapter from '@vespaiach/axios-fetch-adapter';
 
 export interface Post extends Content {
 	title: string;
@@ -17,7 +18,8 @@ export interface Post extends Content {
 const client = createClient({
 	spaceUid: PRIVATE_NEWT_SPACE_UID,
 	token: PRIVATE_NEWT_CDN_TOKEN,
-	apiType: 'cdn'
+	apiType: 'cdn',
+	adapter: fetchAdapter
 });
 
 export async function getArticles(): Promise<Contents<Post>> {

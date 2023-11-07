@@ -31,6 +31,7 @@
   "type": "module",
   "dependencies": {
     "@iconify/json": "^2.2.138",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "newt-client-js": "^3.2.7",
     "qrcode": "^1.5.3",
     "unplugin-icons": "^0.17.3"
