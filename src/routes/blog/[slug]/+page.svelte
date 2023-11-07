@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Post } from '$lib/api/newt';
+	import type { PageData } from './$types';
 
-	export let data: Post;
+	export let data: PageData;
 
 	const article = data.article;
 	console.log('$$props', $$props);

@@ -1,10 +1,10 @@
-import { getArticles } from '$lib/api/newt';
-import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { error } from '@sveltejs/kit';
+import { client, type Post } from '$lib/api/newt';
 
 export const load: PageServerLoad = async () => {
 	try {
-		const articles = await getArticles();
+		const articles = await client.getContents<Post>({ appUid: 'blog', modelUid: 'article' });
 		return { articles };
 	} catch (e) {
 		console.error(e);
