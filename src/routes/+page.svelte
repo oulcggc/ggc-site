@@ -1,12 +1,13 @@
 <script lang="ts">
 	import SNSIcon from '$lib/ui/SNSIcon.svelte';
+	import NavMenu from '$lib/ui/NavMenu.svelte';
 	import SNS_ACCOUNTS from '$data/sns.json';
 
 	import SectionContent from '$lib/sections/SectionContent.svelte';
 	import SectionPlace from '$lib/sections/SectionPlace.svelte';
 	import SectionContact from '$lib/sections/SectionContact.svelte';
 	import SectionHome from '$lib/sections/SectionHome.svelte';
-	import NavMenu from '$lib/ui/NavMenu.svelte';
+	import SectionIntroduction from '$lib/sections/SectionIntroduction.svelte';
 </script>
 
 <svelte:head>
@@ -22,7 +23,8 @@
 			<a href="/blog" target="_blank">ブログ</a>
 		</li>
 		<li>
-			<a href="#content"> 活動詳細 </a>
+			<a href="#introduction"> サークル紹介 </a>
+		</li>
 		</li>
 		<li>
 			<a href="#place"> 活動拠点 </a>
@@ -46,6 +48,10 @@
 <main>
 	<section id="home">
 		<SectionHome />
+	</section>
+
+	<section id="introduction">
+		<SectionIntroduction />
 	</section>
 
 	<section id="content">
