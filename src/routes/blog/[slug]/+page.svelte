@@ -3,6 +3,7 @@
 	import SnsIcon from '$lib/ui/SNSIcon.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
 	import { createFacebookShareURL, createLineShareURL, createTwitterShareURL } from '$lib/util/sns';
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -10,6 +11,16 @@
 	const article = data.article;
 	console.log('$$props', $$props);
 	console.log('data', data);
+
+	let twitterShareURL: string;
+	let facebookShareURL: string;
+	let lineShareURL: string;
+
+	onMount(() => {
+		twitterShareURL = createTwitterShareURL(`${article.title}\n阪大言語サークルGGC @oulcggc`);
+		facebookShareURL = createFacebookShareURL();
+		lineShareURL = createLineShareURL();
+	});
 
 	import RiShareCircleFill from '~icons/ri/share-circle-fill';
 </script>
@@ -32,17 +43,13 @@
 		<!-- <span>{data.publishedAt}</span> -->
 	</div>
 	<div class="share">
-		<a
-			href={createTwitterShareURL(`${article.title}\n阪大言語サークルGGC @oulcggc`)}
-			title="X（旧Twitter）でシェア"
-			target="_blank"
-		>
+		<a href={twitterShareURL} title="X（旧Twitter）でシェア" target="_blank">
 			<SnsIcon type="twitter" />
 		</a>
-		<a href={createLineShareURL()} title="LINEでシェア" target="_blank">
+		<a href={lineShareURL} title="LINEでシェア" target="_blank">
 			<SnsIcon type="line" />
 		</a>
-		<a href={createFacebookShareURL()} title="Facebookでシェア" target="_blank">
+		<a href={facebookShareURL} title="Facebookでシェア" target="_blank">
 			<SnsIcon type="facebook" />
 		</a>
 		<button
