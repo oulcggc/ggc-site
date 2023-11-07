@@ -1,12 +1,22 @@
-<nav>
-	<ul>
+<script>
+	import NavMenu from '$lib/ui/NavMenu.svelte';
+</script>
+
+<div>
+	<NavMenu>
 		<li>
 			<a href="/"> ホーム </a>
 		</li>
 		<li>
 			<a href="/blog"> ブログ </a>
 		</li>
-	</ul>
-</nav>
+	</NavMenu>
+</div>
 
 <slot />
+
+<style>
+	div {
+		padding: 1.5em;
+	}
+</style>
