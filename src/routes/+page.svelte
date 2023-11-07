@@ -60,25 +60,14 @@
 </section>
 
 <style>
-	.floating {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 100;
-
-		display: flex;
-		justify-content: space-between;
-		padding: 2em;
-	}
-
 	section {
-		height: 100vh;
+		min-height: 100vh;
+		display: grid;
+		place-items: center;
 	}
 
 	section:not(:first-of-type) {
-		padding: 15em;
+		padding: 5vw;
 	}
 
 	ul {
