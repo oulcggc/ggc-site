@@ -16,12 +16,12 @@
 			{name}
 		</a>
 	{/each}
-	<div class="openchat-qr">
+	<a href={OPENCHAT_LINK} target="_blank" title="LINEオープンチャット" class="openchat-qr">
 		<div class="qr-logo">
 			<img src={OPENCHAT_LOGO} alt="LINEオープンチャット" title="LINEオープンチャット" />
 		</div>
 		<QRCode text={OPENCHAT_LINK} />
-	</div>
+	</a>
 </div>
 
 <style>
