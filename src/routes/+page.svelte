@@ -25,7 +25,7 @@
 			<a href="#content"> 活動詳細 </a>
 		</li>
 		<li>
-			<a href="#place"> 活動時間・場所 </a>
+			<a href="#place"> 活動拠点 </a>
 		</li>
 		<li>
 			<a href="#contact"> お問い合わせ </a>
@@ -43,21 +43,23 @@
 	{/each}
 </ul>
 
-<section id="home">
-	<SectionHome />
-</section>
+<main>
+	<section id="home">
+		<SectionHome />
+	</section>
 
-<section id="content">
-	<SectionContent />
-</section>
+	<section id="content">
+		<SectionContent />
+	</section>
 
-<section id="place">
-	<SectionPlace />
-</section>
+	<section id="place">
+		<SectionPlace />
+	</section>
 
-<section id="contact">
-	<SectionContact />
-</section>
+	<section id="contact">
+		<SectionContact />
+	</section>
+</main>
 
 <style>
 	section {
