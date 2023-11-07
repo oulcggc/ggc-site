@@ -6,42 +6,42 @@
 	import SectionPlace from '$lib/sections/SectionPlace.svelte';
 	import SectionContact from '$lib/sections/SectionContact.svelte';
 	import SectionHome from '$lib/sections/SectionHome.svelte';
+	import NavMenu from '$lib/ui/NavMenu.svelte';
 </script>
 
 <svelte:head>
 	<title>阪大言語サークルGGC</title>
 </svelte:head>
 
-<div class="floating">
-	<nav>
-		<ul>
-			<li>
-				<a href="#home"> ホーム </a>
-			</li>
-			<li>
-				<a href="/blog" target="_blank">ブログ</a>
-			</li>
-			<li>
-				<a href="#content"> 活動詳細 </a>
-			</li>
-			<li>
-				<a href="#place"> 活動時間・場所 </a>
-			</li>
-			<li>
-				<a href="#contact"> お問い合わせ </a>
-			</li>
-		</ul>
-	</nav>
-	<ul class="sns">
-		{#each SNS_ACCOUNTS as { link, type }}
-			<li>
-				<a href={link} target="_blank" rel="noopener">
-					<SNSIcon {type} />
-				</a>
-			</li>
-		{/each}
-	</ul>
+<div class="nav">
+	<NavMenu>
+		<li>
+			<a href="#home"> ホーム </a>
+		</li>
+		<li>
+			<a href="/blog" target="_blank">ブログ</a>
+		</li>
+		<li>
+			<a href="#content"> 活動詳細 </a>
+		</li>
+		<li>
+			<a href="#place"> 活動時間・場所 </a>
+		</li>
+		<li>
+			<a href="#contact"> お問い合わせ </a>
+		</li>
+	</NavMenu>
 </div>
+
+<ul class="sns">
+	{#each SNS_ACCOUNTS as { link, type }}
+		<li>
+			<a href={link} target="_blank" rel="noopener">
+				<SNSIcon {type} />
+			</a>
+		</li>
+	{/each}
+</ul>
 
 <section id="home">
 	<SectionHome />
@@ -87,34 +87,28 @@
 		margin: 0;
 	}
 
-	ul.sns {
+	.sns {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+
 		font-size: 2.5em;
+
+		margin-right: 1em;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
-	nav a {
-		color: inherit;
-		text-decoration: none;
-		transition: color 0.2s ease-in-out;
-		position: relative;
-	}
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 100;
 
-	nav a:hover {
-		/* text-decoration: underline; */
-		color: #184164;
-	}
-
-	nav a::after {
-		content: '';
-		display: block;
-		position: absolute;
-		width: 0;
-		height: 2px;
-		bottom: -0.2em;
-		background: #184164;
-		transition: width 0.3s ease-in-out;
-	}
-
-	nav a:hover::after {
-		width: 100%;
+		padding: 1em;
 	}
 </style>
