@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Avatar from '$lib/ui/Avatar.svelte';
 	import SnsIcon from '$lib/ui/SNSIcon.svelte';
+	import Tag from '$lib/ui/Tag.svelte';
 	import { createFacebookShareURL, createLineShareURL, createTwitterShareURL } from '$lib/util/sns';
 	import type { PageData } from './$types';
 
@@ -59,10 +60,7 @@
 	</div>
 	<div class="tags">
 		{#each article.tags as tag}
-			<div class="tag">
-				{tag.name}
-			</div>
-			<!-- <a href={`/blog/tags/${tag.slug}`}>{tag.name}</a> -->
+			<Tag name={tag.name} slug={tag.slug} />
 		{/each}
 	</div>
 </main>
@@ -186,16 +184,5 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5em;
-	}
-
-	.tag {
-		border: 1px solid #a8a8a8;
-		padding: 0.25em 0.5em;
-		border-radius: 0.25em;
-		font-size: 0.75em;
-	}
-
-	.tag::before {
-		content: '# ';
 	}
 </style>

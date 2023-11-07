@@ -263,18 +263,25 @@ export interface Image extends FileBase {
 	height: number;
 }
 
+export interface Author {
+	fullName: string;
+	slug: string;
+	biography: string;
+	profileImage: Image | null;
+}
+
+export interface Tag {
+	name: string;
+	slug: string;
+}
+
 export interface Post extends Content {
 	title: string;
 	body: string;
 	coverImage: Image;
 	slug: string;
-	author: {
-		fullName: string;
-		slug: string;
-		biography: string;
-		profileImage: Image | null;
-	};
-	tags: string[];
+	author: Author;
+	tags: Tag[];
 }
 
 export interface GetContentParams {
