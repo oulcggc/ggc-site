@@ -9,5 +9,8 @@ export default defineConfig({
 		Icons({
 			compiler: 'svelte'
 		})
-	]
+	],
+	ssr: {
+		noExternal: '@vespaiach/axios-fetch-adapter'
+	}
 });
