@@ -8,8 +8,6 @@ declare module '$data/sns.json' {
 	export default value;
 }
 
-declare type SNS = 'twitter' | 'instagram' | 'github';
-
 declare type SNSAccount = {
 	type: SNS;
 	name: string;

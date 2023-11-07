@@ -267,6 +267,7 @@ export interface Post extends Content {
 	title: string;
 	body: string;
 	coverImage: Image;
+	slug: string;
 	author: {
 		fullName: string;
 		slug: string;
