@@ -12,7 +12,9 @@
 
 <div class="event" data-color={color}>
 	<h3>
-		{name}
+		<span title={name}>
+			{name}
+		</span>
 		<!-- TODO: 詳細 as tooltip -->
 		<button
 			title="詳細"
@@ -79,6 +81,8 @@
 		grid-template-columns: auto 1fr;
 		align-items: center;
 		gap: 0.25em;
+
+		min-height: 100%;
 	}
 
 	h3 {
@@ -91,6 +95,14 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.25em;
+
+		overflow: hidden;
+	}
+
+	h3 > span {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	button {

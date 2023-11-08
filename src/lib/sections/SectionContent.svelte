@@ -139,4 +139,18 @@
 		border: 1px solid #ddd;
 		padding: 0.5em;
 	}
+
+	td {
+		vertical-align: top;
+	}
+
+	@media (max-width: 800px) {
+		table {
+			writing-mode: vertical-lr;
+		}
+		th,
+		td {
+			writing-mode: horizontal-tb;
+		}
+	}
 </style>
