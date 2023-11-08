@@ -2,6 +2,8 @@
 	import NavMenu from '$lib/ui/NavMenu.svelte';
 	import SideSNS from '$lib/ui/SideSNS.svelte';
 
+	import RiCopyrightLine from '~icons/ri/copyright-line';
+
 	import { SECTIONS } from '$lib/sections';
 </script>
 
@@ -57,6 +59,14 @@
 	{/each}
 </main>
 
+<hr />
+
+<footer>
+	<p>
+		<RiCopyrightLine /> 2022-2023 阪大言語サークルGGC
+	</p>
+</footer>
+
 <style>
 	section {
 		min-height: 100vh;
@@ -74,6 +84,12 @@
 		}
 	}
 
+	@media (max-width: 768px) {
+		section {
+			min-height: 0;
+		}
+	}
+
 	.nav {
 		position: fixed;
 		top: 0;
@@ -82,5 +98,16 @@
 		z-index: 100;
 
 		padding: 1em;
+	}
+
+	footer p {
+		margin: 0;
+
+		padding: 1em;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25em;
 	}
 </style>
