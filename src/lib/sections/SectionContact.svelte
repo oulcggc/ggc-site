@@ -9,19 +9,30 @@
 
 <h2>お問い合わせ</h2>
 
-<div class="sns">
-	{#each SNS_ACCOUNTS as { link, type, name }}
-		<a href={link} target="_blank" rel="noopener">
-			<SNSIcon {type} />
-			{name}
+<div class="contact">
+	<div class="entry">
+		<h3>入会について</h3>
+		<p>見学・入会は右記の連絡先からお問い合わせください。会費不要です！</p>
+
+		<p>留学生・大学院生・他大生大歓迎！メンバーは暇な時だけ参加しているので、兼部も自由です。</p>
+	</div>
+
+	<div class="info">
+		<h3>連絡先</h3>
+		{#each SNS_ACCOUNTS as { link, type, name }}
+			<a href={link} target="_blank" rel="noopener" class="text">
+				{name}
+				<SNSIcon {type} />
+			</a>
+		{/each}
+
+		<a href={OPENCHAT_LINK} target="_blank" title="LINEオープンチャット" class="openchat-qr">
+			<div class="qr-logo">
+				<img src={OPENCHAT_LOGO} alt="LINEオープンチャット" title="LINEオープンチャット" />
+			</div>
+			<QRCode text={OPENCHAT_LINK} />
 		</a>
-	{/each}
-	<a href={OPENCHAT_LINK} target="_blank" title="LINEオープンチャット" class="openchat-qr">
-		<div class="qr-logo">
-			<img src={OPENCHAT_LOGO} alt="LINEオープンチャット" title="LINEオープンチャット" />
-		</div>
-		<QRCode text={OPENCHAT_LINK} />
-	</a>
+	</div>
 </div>
 
 <style>
@@ -50,5 +61,28 @@
 		border-radius: 50%;
 		border: 3px solid white;
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+	}
+
+	.contact {
+		display: grid;
+		grid-template-columns: 16em 16em;
+		gap: 3em;
+
+		text-align: center;
+	}
+
+	.info {
+		display: grid;
+		justify-items: center;
+		width: 5em;
+	}
+
+	.entry p {
+		max-width: 16em;
+	}
+
+	a {
+		justify-content: space-between;
+		width: 100%;
 	}
 </style>
