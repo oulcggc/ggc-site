@@ -16,8 +16,14 @@
 
 	onMount(() => {
 		index = register();
+
+		smallScreen = window.innerWidth < 768;
 	});
+
+	let smallScreen = false;
 </script>
+
+<svelte:window on:resize={() => (smallScreen = window.innerWidth < 768)} />
 
 <section
 	{id}
@@ -28,7 +34,7 @@
 	on:inview_leave={() => ($inviews[index] = inView = false)}
 	on:inview_change={({ detail }) => (inView = detail.inView)}
 >
-	{#if inView}
+	{#if smallScreen || inView}
 		<div transition:fly={{ y: -15, duration: 950, opacity: 0.4 }}>
 			<slot />
 		</div>
