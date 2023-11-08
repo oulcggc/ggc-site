@@ -43,7 +43,6 @@
 		margin: 1em 0;
 		border: 1px solid #ccc;
 		border-radius: 5px;
-		box-shadow: 0 0 10px #ccc;
 		display: flex;
 		flex-direction: column;
 		gap: 0.75em;
