@@ -19,18 +19,18 @@
 		{name}
 	</h3>
 	<p class="campus">
-		<a href={access} class="text">
+		<a href={access} class="text" target="_blank">
 			<RiAtLine height="1.5em" />
 			{campus}
 		</a>
 	</p>
 
-	<a href={access} class="photo" bind:this={photoLink}>
+	<a href={access} class="photo" bind:this={photoLink} target="_blank">
 		<img src={photo} alt="{name}の写真" title="{name}の写真" />
 	</a>
 	<p class="time">{time}</p>
 	<p class="building">
-		<a href={facility} class="text">
+		<a href={facility} class="text" target="_blank">
 			<RiMapPin2Line height="1.5em" />
 			{building}
 		</a>
