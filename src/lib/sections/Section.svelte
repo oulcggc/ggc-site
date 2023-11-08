@@ -48,6 +48,14 @@
 		width: 100%;
 	}
 
+	section :global(h2) {
+		margin: 0.75em 0;
+	}
+
+	section :global(h3) {
+		margin: 0.5em 0;
+	}
+
 	section {
 		min-height: 100vh;
 		display: grid;

@@ -45,5 +45,6 @@
 	a.text {
 		font-weight: bold;
 		font-size: 1.15em;
+		margin-top: 1em;
 	}
 </style>
