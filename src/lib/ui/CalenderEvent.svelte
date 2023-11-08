@@ -121,4 +121,15 @@
 	button:hover {
 		color: var(--color-bg);
 	}
+
+	@media (max-width: 512px) {
+		.event {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.event :global(svg) {
+			display: none;
+		}
+	}
 </style>

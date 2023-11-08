@@ -37,7 +37,13 @@
 	}
 
 	section:not(:first-of-type) {
-		padding: 5vw;
+		padding: 10vw;
+	}
+
+	@media (max-width: 512px) {
+		section:not(:first-of-type) {
+			padding: 5vw;
+		}
 	}
 
 	.nav {
