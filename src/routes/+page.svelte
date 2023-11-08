@@ -1,13 +1,12 @@
 <script lang="ts">
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
 	import NavMenu from '$lib/ui/NavMenu.svelte';
-	import SNS_ACCOUNTS from '$data/sns.json';
 
 	import SectionContent from '$lib/sections/SectionContent.svelte';
 	import SectionPlace from '$lib/sections/SectionPlace.svelte';
 	import SectionContact from '$lib/sections/SectionContact.svelte';
 	import SectionHome from '$lib/sections/SectionHome.svelte';
 	import SectionIntroduction from '$lib/sections/SectionIntroduction.svelte';
+	import SideSNS from '$lib/ui/SideSNS.svelte';
 </script>
 
 <svelte:head>
@@ -37,15 +36,7 @@
 	</NavMenu>
 </div>
 
-<ul class="sns">
-	{#each SNS_ACCOUNTS as { link, type }}
-		<li>
-			<a href={link} target="_blank" rel="noopener">
-				<SNSIcon {type} />
-			</a>
-		</li>
-	{/each}
-</ul>
+<SideSNS />
 
 <main>
 	<section id="home">
@@ -78,27 +69,6 @@
 
 	section:not(:first-of-type) {
 		padding: 5vw;
-	}
-
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.sns {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 100;
-
-		font-size: 2.5em;
-
-		margin-right: 1em;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 	}
 
 	.nav {
