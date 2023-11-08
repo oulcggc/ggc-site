@@ -4,6 +4,6 @@
 	export let text: string;
 </script>
 
-{#await QRCode.toDataURL(text, { errorCorrectionLevel: 'H', margin: 2, width: 200 }) then src}
+{#await QRCode.toDataURL(text, { errorCorrectionLevel: 'H', margin: 2, width: 205 }) then src}
 	<img {src} alt={text} title={text} />
 {/await}

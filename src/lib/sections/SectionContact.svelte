@@ -12,7 +12,7 @@
 <div class="contact">
 	<div class="entry">
 		<h3>入会について</h3>
-		<p>見学・入会は右記の連絡先からお問い合わせください。会費不要です！</p>
+		<p>見学・入会は下記連絡先からお問い合わせください。会費不要です。</p>
 
 		<p>留学生・大学院生・他大生大歓迎！メンバーは暇な時だけ参加しているので、兼部も自由です。</p>
 	</div>
@@ -65,8 +65,9 @@
 
 	.contact {
 		display: grid;
-		grid-template-columns: 16em 16em;
+		grid-template-columns: 1fr 1fr;
 		gap: 3em;
+		justify-content: center;
 
 		text-align: center;
 	}
@@ -74,7 +75,6 @@
 	.info {
 		display: grid;
 		justify-items: center;
-		width: 5em;
 	}
 
 	.entry p {
@@ -83,6 +83,16 @@
 
 	a {
 		justify-content: space-between;
-		width: 100%;
+		width: 12em;
+	}
+
+	@media (max-width: 768px) {
+		.contact {
+			grid-template-columns: 1fr;
+		}
+
+		.info {
+			width: 100%;
+		}
 	}
 </style>
