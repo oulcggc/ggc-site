@@ -1,8 +1,8 @@
 <script lang="ts">
 	import NavMenu from '$lib/ui/NavMenu.svelte';
-
-	import SectionAbout from '$lib/sections/SectionAbout.svelte';
 	import SideSNS from '$lib/ui/SideSNS.svelte';
+
+	import { SECTIONS } from '$lib/sections';
 </script>
 
 <svelte:head>
@@ -11,49 +11,22 @@
 
 <div class="nav">
 	<NavMenu>
-		<li>
-			<a href="#home"> ホーム </a>
-		</li>
-		<li>
-			<a href="/blog" target="_blank">ブログ</a>
-		</li>
-		<li>
-			<a href="#about"> サークル紹介 </a>
-		</li>
-		<li>
-			<a href="#content"> 活動内容 </a>
-		</li>
-		<li>
-			<a href="#place"> 活動拠点 </a>
-		</li>
-		<li>
-			<a href="#contact"> お問い合わせ </a>
-		</li>
+		{#each SECTIONS as { id, name }}
+			<li>
+				<a href={`#${id}`}>{name}</a>
+			</li>
+		{/each}
 	</NavMenu>
 </div>
 
 <SideSNS />
 
 <main>
-	<section id="home">
-		<SectionHome />
-	</section>
-
-	<section id="about">
-		<SectionAbout />
-	</section>
-
-	<section id="content">
-		<SectionContent />
-	</section>
-
-	<section id="place">
-		<SectionPlace />
-	</section>
-
-	<section id="contact">
-		<SectionContact />
-	</section>
+	{#each SECTIONS as { id, component }}
+		<section {id}>
+			<svelte:component this={component} />
+		</section>
+	{/each}
 </main>
 
 <style>
