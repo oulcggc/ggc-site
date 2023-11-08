@@ -1,3 +1,7 @@
+:root {
+	font-family: sans-serif;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -28,4 +32,11 @@ a.text::after {
 
 a.text:hover::after {
 	width: 100%;
+}
+
+button,
+input,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
 }
