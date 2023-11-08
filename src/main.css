@@ -34,6 +34,10 @@ a.text::after {
 	transition: width 0.3s ease-in-out;
 }
 
+a.text:hover {
+	filter: drop-shadow(0 0 0.1em #2c6e9922) brightness(1.1);
+}
+
 a.text:hover::after {
 	width: 100%;
 }

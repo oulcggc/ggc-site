@@ -5,6 +5,11 @@
 	import RiCopyrightLine from '~icons/ri/copyright-line';
 
 	import { SECTIONS } from '$lib/sections';
+
+	import { Hamburger } from 'svelte-hamburgers';
+	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
+
+	let hamburgerOpen = false;
 </script>
 
 <svelte:head>
@@ -39,15 +44,20 @@
 	<meta property="twitter:image" content="https://ggc-osaka.pages.dev/banner.png" />
 </svelte:head>
 
-<div class="nav">
-	<NavMenu>
-		{#each SECTIONS as { id, name }}
-			<li>
-				<a href={`#${id}`}>{name}</a>
-			</li>
-		{/each}
-	</NavMenu>
-</div>
+<svelte:window on:resize={() => (hamburgerOpen = false)} />
+
+<nav class="hamburger" data-open={hamburgerOpen}>
+	<div class="hamburger-container">
+		<Hamburger bind:open={hamburgerOpen} --padding={0} />
+		<div class="menu">
+			<HamburgerMenu sections={SECTIONS} bind:open={hamburgerOpen} />
+		</div>
+	</div>
+</nav>
+
+<nav class="float">
+	<NavMenu sections={SECTIONS} />
+</nav>
 
 <SideSNS />
 
@@ -84,20 +94,80 @@
 		}
 	}
 
+	nav.hamburger {
+		display: none;
+
+		text-align: right;
+		position: relative;
+		height: 5.5em;
+
+		--color: #2c6e99;
+		--active-color: white;
+	}
+
+	.hamburger-container {
+		padding: 1.75em 2em;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		display: flex;
+		align-items: end;
+		justify-content: start;
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	nav.hamburger[data-open='true'] .hamburger-container {
+		bottom: auto;
+		height: 100vh;
+		background: #184164bb;
+		backdrop-filter: blur(0.5em);
+		z-index: 100;
+	}
+
+	nav.hamburger .menu {
+		width: auto;
+		padding-left: 2em;
+		opacity: 0;
+		transition: opacity 0.2s ease-in-out;
+
+		font-size: 1.5em;
+
+		color: white;
+	}
+
+	nav.hamburger[data-open='true'] .menu {
+		opacity: 1;
+	}
+
+	nav.float {
+		display: block;
+		position: fixed;
+		left: 0.5em;
+		width: 20vw;
+		padding: 1em 1em;
+		margin: auto 0;
+
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
 	@media (max-width: 768px) {
 		section {
 			min-height: 0;
 		}
-	}
 
-	.nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		z-index: 100;
+		nav.hamburger {
+			display: block;
+		}
 
-		padding: 1em;
+		nav.float {
+			display: none;
+		}
 	}
 
 	footer p {
