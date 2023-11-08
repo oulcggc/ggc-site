@@ -1,7 +1,3 @@
-<script lang="ts">
-	import RiBuilding2Line from '~icons/ri/building-2-line';
-</script>
-
 <h2>サークル紹介</h2>
 
 <div class="text">

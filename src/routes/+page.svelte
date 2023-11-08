@@ -1,11 +1,7 @@
 <script lang="ts">
 	import NavMenu from '$lib/ui/NavMenu.svelte';
 
-	import SectionContent from '$lib/sections/SectionContent.svelte';
-	import SectionPlace from '$lib/sections/SectionPlace.svelte';
-	import SectionContact from '$lib/sections/SectionContact.svelte';
-	import SectionHome from '$lib/sections/SectionHome.svelte';
-	import SectionIntroduction from '$lib/sections/SectionIntroduction.svelte';
+	import SectionAbout from '$lib/sections/SectionAbout.svelte';
 	import SideSNS from '$lib/ui/SideSNS.svelte';
 </script>
 
@@ -22,7 +18,7 @@
 			<a href="/blog" target="_blank">ブログ</a>
 		</li>
 		<li>
-			<a href="#introduction"> サークル紹介 </a>
+			<a href="#about"> サークル紹介 </a>
 		</li>
 		<li>
 			<a href="#content"> 活動内容 </a>
@@ -43,8 +39,8 @@
 		<SectionHome />
 	</section>
 
-	<section id="introduction">
-		<SectionIntroduction />
+	<section id="about">
+		<SectionAbout />
 	</section>
 
 	<section id="content">
