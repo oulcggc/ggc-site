@@ -89,7 +89,7 @@
 		</tr>
 	</tbody>
 </table>
-<p>※いずれも変更の可能性あり</p>
+<p class="notice">※いずれも変更の可能性あり</p>
 
 <a
 	href="https://sites.google.com/view/ggccalendar/%E3%83%9B%E3%83%BC%E3%83%A0"
@@ -152,5 +152,10 @@
 		td {
 			writing-mode: horizontal-tb;
 		}
+	}
+
+	.notice {
+		font-size: 1.2em;
+		text-align: center;
 	}
 </style>
