@@ -15,7 +15,7 @@
 	}}
 />
 
-<ul class="sns" style:opacity>
+<ul class="sns" style:opacity style:pointer-events={opacity > 0.1 ? 'auto' : 'none'}>
 	{#each SNS_ACCOUNTS as { link, type, name }}
 		<li>
 			<a href={link} target="_blank" rel="noopener" title={name}>
