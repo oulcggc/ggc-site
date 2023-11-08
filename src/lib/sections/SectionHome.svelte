@@ -3,8 +3,8 @@
 </script>
 
 <div>
-	<h1>阪大言語サークルGGC</h1>
-	<img src={GGCLogo} alt="阪大言語サークルGGC" />
+	<h1>阪大言語サークル</h1>
+	<img src={GGCLogo} alt="GGC" />
 </div>
 
 <style>
@@ -18,15 +18,16 @@
 	}
 
 	h1 {
-		font-size: 3rem;
+		font-size: 2.85rem;
 		font-weight: bold;
 		color: #2c6e99;
-		text-shadow: 0 0 10px 0 rgba(12, 12, 12, 0.5);
+		text-shadow: 0 0 5px #13426322;
 		margin: 0;
+		line-height: 1.5;
 	}
 
 	img {
-		width: 15em;
-		height: 15em;
+		width: 18em;
+		height: 18em;
 	}
 </style>
