@@ -59,4 +59,10 @@
 		color: #2c6e99;
 		filter: drop-shadow(0 0 5px #2c6e9944);
 	}
+
+	@media (max-width: 768px) {
+		.sns {
+			display: none;
+		}
+	}
 </style>
