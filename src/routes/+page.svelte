@@ -8,8 +8,13 @@
 
 	import { Hamburger } from 'svelte-hamburgers';
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
+	import Section from '$lib/sections/Section.svelte';
+	import Sections from '$lib/sections/Sections.svelte';
+	import type { Writable } from 'svelte/store';
 
 	let hamburgerOpen = false;
+
+	let inviews: Writable<boolean[]>;
 </script>
 
 <svelte:head>
@@ -56,17 +61,19 @@
 </nav>
 
 <nav class="float">
-	<NavMenu sections={SECTIONS} />
+	<NavMenu sections={SECTIONS} inviews={$inviews} />
 </nav>
 
 <SideSNS />
 
 <main>
-	{#each SECTIONS as { id, component }}
-		<section {id}>
-			<svelte:component this={component} />
-		</section>
-	{/each}
+	<Sections bind:inviews>
+		{#each SECTIONS as { id, component }}
+			<Section {id}>
+				<svelte:component this={component} />
+			</Section>
+		{/each}
+	</Sections>
 </main>
 
 <hr />
@@ -78,22 +85,6 @@
 </footer>
 
 <style>
-	section {
-		min-height: 100vh;
-		display: grid;
-		place-items: center;
-	}
-
-	section:not(:first-of-type) {
-		padding: 10vw;
-	}
-
-	@media (max-width: 512px) {
-		section:not(:first-of-type) {
-			padding: 5vw;
-		}
-	}
-
 	nav.hamburger {
 		display: none;
 
@@ -157,10 +148,6 @@
 	}
 
 	@media (max-width: 768px) {
-		section {
-			min-height: 0;
-		}
-
 		nav.hamburger {
 			display: block;
 		}

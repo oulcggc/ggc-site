@@ -1,14 +1,18 @@
 <script lang="ts">
 	export let sections: { id: string; name: string }[] = [];
+	export let inviews: boolean[];
 </script>
 
-<ul>
-	{#each sections as { id, name }}
-		<li>
-			<a href={`#${id}`} class="text">{name}</a>
-		</li>
-	{/each}
-</ul>
+{#if inviews}
+	<ul>
+		{#each sections as { id, name }, i}
+			{@const inview = inviews[i] ?? false}
+			<li class:inview>
+				<a href={`#${id}`} class="text">{name}</a>
+			</li>
+		{/each}
+	</ul>
+{/if}
 
 <style>
 	ul {
@@ -28,5 +32,13 @@
 
 	a.text::after {
 		left: 0;
+	}
+
+	li.inview a.text {
+		filter: drop-shadow(0 0 0.1em #2c6e9922) brightness(1.5);
+	}
+
+	li.inview a.text::after {
+		width: 100%;
 	}
 </style>
