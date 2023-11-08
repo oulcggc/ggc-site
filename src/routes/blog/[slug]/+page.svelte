@@ -87,6 +87,10 @@
 			'g g';
 	}
 
+	h1 {
+		grid-area: t;
+	}
+
 	figure.cover {
 		grid-area: f;
 
