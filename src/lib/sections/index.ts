@@ -18,6 +18,11 @@ export const SECTIONS = [
 		component: SectionHome
 	},
 	{
+		name: 'ブログ',
+		id: 'blog',
+		component: SectionBlog
+	},
+	{
 		name: 'サークル紹介',
 		id: 'about',
 		component: SectionAbout

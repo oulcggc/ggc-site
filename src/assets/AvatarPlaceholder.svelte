@@ -1,4 +1,4 @@
-<svg width="32" height="32" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g clip-path="url(#clip0_1_2)">
 		<circle cx="256" cy="256" r="256" fill="#D9D9D9" />
 		<circle cx="256.5" cy="156.5" r="96.5" fill="#A8A8A8" />
