@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Avatar from '$lib/ui/Avatar.svelte';
 	import SnsIcon from '$lib/ui/SNSIcon.svelte';
+	import Article from '$lib/ui/blog/Article.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
 	import { createFacebookShareURL, createLineShareURL, createTwitterShareURL } from '$lib/util/sns';
 	import { onMount } from 'svelte';
@@ -62,9 +63,7 @@
 			<RiShareCircleFill height="1em" />
 		</button>
 	</div>
-	<div class="article-body">
-		{@html article.body}
-	</div>
+	<Article content={article.body} />
 	<div class="tags">
 		{#each article.tags as tag}
 			<Tag name={tag.name} slug={tag.slug} />
@@ -186,10 +185,6 @@
 
 	.share button.icon:hover {
 		color: var(--color-theme);
-	}
-
-	.article-body {
-		grid-area: c;
 	}
 
 	.tags {
