@@ -15,6 +15,11 @@
 		<p>見学・入会は下記連絡先からお問い合わせください。会費不要です。</p>
 
 		<p>留学生・大学院生・他大生大歓迎！メンバーは暇な時だけ参加しているので、兼部も自由です。</p>
+
+		<p>
+			<a href="#" class="text" title="制作中">注意事項(TBD)</a>
+			<a href="#" class="text" title="制作中">会則(TBD)</a>
+		</p>
 	</div>
 
 	<div class="info">
@@ -81,7 +86,7 @@
 		max-width: 16em;
 	}
 
-	a {
+	.info a {
 		justify-content: space-between;
 		width: 12em;
 	}
