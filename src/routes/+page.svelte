@@ -92,7 +92,7 @@
 		position: relative;
 		height: 5.5em;
 
-		--color: #2c6e99;
+		--color: var(--color-accent);
 		--active-color: white;
 	}
 

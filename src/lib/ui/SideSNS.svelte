@@ -56,8 +56,8 @@
 	}
 
 	a:hover {
-		color: #2c6e99;
-		filter: drop-shadow(0 0 5px #2c6e9944);
+		color: var(--color-accent);
+		filter: drop-shadow(0 0 5px color-mix(in srgb, var(--color-accent) 20%, transparent));
 	}
 
 	@media (max-width: 768px) {

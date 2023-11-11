@@ -2,6 +2,7 @@
 	font-family: sans-serif;
 
 	--color-theme: #184164;
+	--color-accent: #2c6e99;
 }
 
 body {
@@ -37,7 +38,8 @@ a.text::after {
 }
 
 a.text:hover {
-	filter: drop-shadow(0 0 0.1em #2c6e9922) brightness(1.1);
+	filter: drop-shadow(0 0 0.1em color-mix(in srgb, var(--color-theme) 10%, transparent))
+		brightness(1.1);
 }
 
 a.text:hover::after {

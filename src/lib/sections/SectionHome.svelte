@@ -20,7 +20,7 @@
 	h1 {
 		font-size: 2.85rem;
 		font-weight: bold;
-		color: #2c6e99;
+		color: var(--color-accent);
 		text-shadow: 0 0 5px #13426322;
 		margin: 0;
 		line-height: 1.5;
