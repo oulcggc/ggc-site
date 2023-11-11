@@ -157,7 +157,7 @@
 	}
 
 	.share a:hover {
-		color: #184164;
+		color: var(--color-theme);
 	}
 
 	.share a:visited {
@@ -176,7 +176,7 @@
 	}
 
 	button.icon:hover {
-		color: #184164;
+		color: var(--color-theme);
 	}
 
 	.share button.icon {
@@ -185,7 +185,7 @@
 	}
 
 	.share button.icon:hover {
-		color: #184164;
+		color: var(--color-theme);
 	}
 
 	.article-body {

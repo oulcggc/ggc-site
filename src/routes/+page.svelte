@@ -115,7 +115,7 @@
 	nav.hamburger[data-open='true'] .hamburger-container {
 		bottom: auto;
 		height: 100vh;
-		background: #184164bb;
+		background: color-mix(in srgb, var(--color-theme) 70%, transparent);
 		backdrop-filter: blur(0.5em);
 		z-index: 100;
 	}

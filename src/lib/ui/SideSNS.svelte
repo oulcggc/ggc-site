@@ -48,7 +48,7 @@
 	}
 
 	a {
-		color: #184164;
+		color: var(--color-theme);
 		transition: color 0.2s ease-in-out, filter 0.2s ease-in-out;
 		display: flex;
 		justify-content: center;

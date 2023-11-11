@@ -35,9 +35,9 @@
 
 	a:hover {
 		/* text-decoration: underline; */
-		/* color: #184164; */
-		/* text-shadow: 0 0 0.5em #184164; */
-		/* filter: drop-shadow(0 0 0.5em #184164) drop-shadow(0 0 1em #184164); */
+		/* color: var(--color-theme); */
+		/* text-shadow: 0 0 0.5em var(--color-theme); */
+		/* filter: drop-shadow(0 0 0.5em var(--color-theme)) drop-shadow(0 0 1em var(--color-theme)); */
 	}
 
 	a::after {

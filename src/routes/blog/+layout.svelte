@@ -49,7 +49,7 @@
 	header span {
 		font-size: 1.25em;
 		font-weight: bold;
-		color: #184164;
+		color: var(--color-theme);
 	}
 
 	nav {

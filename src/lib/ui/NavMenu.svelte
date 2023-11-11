@@ -23,7 +23,7 @@
 
 	li::before {
 		content: '・';
-		color: #184164;
+		color: var(--color-theme);
 		font-weight: bold;
 		display: inline-block;
 		width: 1em;

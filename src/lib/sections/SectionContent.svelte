@@ -107,7 +107,7 @@
 		align-items: center;
 		gap: 0.2em;
 		text-decoration: none;
-		color: #184164;
+		color: var(--color-theme);
 		position: relative;
 		transition: color 0.2s ease-in-out;
 		margin: 0 auto;

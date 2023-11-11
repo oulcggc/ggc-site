@@ -62,7 +62,7 @@
 	}
 
 	.card:focus-within {
-		outline: 2px solid #184164;
+		outline: 2px solid var(--color-theme);
 	}
 
 	a:not(.text) {
