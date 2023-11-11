@@ -28,23 +28,27 @@
 <style>
 	.sns {
 		list-style: none;
-		padding: 0;
+		padding: 0.5em 0.25em;
 		margin: 0;
+		margin-right: 0.75em;
 
 		position: fixed;
-		top: 0;
+		top: 50%;
 		right: 0;
-		bottom: 0;
 		z-index: 100;
 
-		font-size: 2.5em;
+		transform: translateY(-50%);
 
-		margin-right: 0.75em;
+		font-size: 2em;
 
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		gap: 0.65em;
+
+		background-color: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(2px);
+		border-radius: 0.5em;
 	}
 
 	a {

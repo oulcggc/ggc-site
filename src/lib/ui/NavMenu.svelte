@@ -24,6 +24,7 @@
 		align-items: start;
 		gap: 0.25em;
 		line-height: 1.5;
+		position: relative;
 	}
 
 	li::before {

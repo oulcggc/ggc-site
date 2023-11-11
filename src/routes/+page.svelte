@@ -139,12 +139,17 @@
 		display: block;
 		position: fixed;
 		left: 0.5em;
-		width: 20vw;
+		width: auto;
 		padding: 1em 1em;
 		margin: auto 0;
 
 		top: 50%;
 		transform: translateY(-50%);
+
+		z-index: 5;
+		background-color: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(2px);
+		border-radius: 0.5em;
 	}
 
 	@media (max-width: 768px) {

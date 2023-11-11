@@ -128,6 +128,7 @@
 
 	.bubbles {
 		position: relative;
+		z-index: -1;
 		/* top: 0;
 		left: 0;
 		right: 0;
