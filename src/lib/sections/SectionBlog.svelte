@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { Contents, Post } from '$lib/api/newt';
-	import BlogCard from '$lib/ui/BlogCard.svelte';
-	import BlogCardSkeleton from '$lib/ui/BlogCardSkeleton.svelte';
+	import BlogCard from '$lib/ui/blog/BlogCard.svelte';
+	import BlogCardSkeleton from '$lib/ui/blog/BlogCardSkeleton.svelte';
 	import RiArticleLine from '~icons/ri/article-line';
-	import { json } from '@sveltejs/kit';
 
 	async function fetchArticles(): Promise<Contents<Post>> {
 		const res = await fetch('/api/blog');
