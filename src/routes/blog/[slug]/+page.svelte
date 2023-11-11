@@ -152,6 +152,8 @@
 		text-decoration: none;
 		transition: color 0.2s ease-in-out;
 		font-size: 1.25em;
+
+		display: contents;
 	}
 
 	.share a:hover {
