@@ -1,20 +1,26 @@
 <script lang="ts">
 	import GGCLogo from '$assets/ggc_logo_1240x1240.jpg';
+	import LanguageBubbles from '$lib/ui/LanguageBubbles.svelte';
 </script>
 
-<div>
-	<h1>阪大言語サークル</h1>
-	<img src={GGCLogo} alt="GGC" />
+<div class="logo">
+	<LanguageBubbles />
+	<div class="symbol">
+		<h1>阪大<span>言語サークル</span></h1>
+		<img src={GGCLogo} alt="GGC" />
+	</div>
+	<LanguageBubbles />
 </div>
 
 <style>
-	div {
+	.logo {
 		width: 100%;
 		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		text-align: center;
+
+		position: relative;
 	}
 
 	h1 {
@@ -29,5 +35,9 @@
 	img {
 		width: 18em;
 		height: 18em;
+	}
+
+	span {
+		word-break: keep-all;
 	}
 </style>
