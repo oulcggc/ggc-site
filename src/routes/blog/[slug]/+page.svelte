@@ -85,6 +85,8 @@
 			'm s'
 			'c c'
 			'g g';
+
+		gap: 1em;
 	}
 
 	h1 {
@@ -186,7 +188,6 @@
 
 	.article-body {
 		grid-area: c;
-		padding: 1em 0;
 	}
 
 	.tags {
