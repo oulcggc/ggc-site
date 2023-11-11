@@ -1,6 +1,16 @@
+<script lang="ts">
+	import Tag from '$lib/ui/Tag.svelte';
+
+	const KEYWORDS = ['大阪大学', '言語サークル', '語学', '言語学', '外語', '言語交換'];
+</script>
+
 <div class="about">
 	<h2>サークル紹介</h2>
-
+	<p class="tags">
+		{#each KEYWORDS as keyword}
+			<Tag name={keyword} slug="" />
+		{/each}
+	</p>
 	<p>
 		大阪大学の箕面キャンパスと豊中キャンパスを拠点に活動している言語サークルです。
 		名前のGGCは、語学・言語学サークル（<b>G</b>ogaku <b>G</b>engogaku
@@ -39,12 +49,21 @@
 		}
 	}
 
-	h2,
 	p {
 		margin: 0;
 	}
 
 	h2 {
+		margin: 0 !important;
 		text-align: center;
+		line-height: 1.5;
+	}
+
+	.tags {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5em;
 	}
 </style>

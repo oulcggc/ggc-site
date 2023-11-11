@@ -3,7 +3,7 @@
 	export let slug: string;
 </script>
 
-<div class="tag">
+<div class="tag" title="キーワード">
 	{name}
 </div>
 
