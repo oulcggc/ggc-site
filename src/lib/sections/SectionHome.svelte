@@ -12,6 +12,8 @@
 	<LanguageBubbles />
 </div>
 
+<p class="catchphrase">「言語を楽しく。」</p>
+
 <style>
 	.logo {
 		width: 100%;
@@ -39,5 +41,12 @@
 
 	span {
 		word-break: keep-all;
+	}
+
+	.catchphrase {
+		font-family: serif;
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin: 0;
 	}
 </style>
