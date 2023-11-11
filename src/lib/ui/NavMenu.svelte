@@ -19,6 +19,11 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 0.25em;
+		line-height: 1.5;
 	}
 
 	li::before {
@@ -28,6 +33,7 @@
 		display: inline-block;
 		width: 1em;
 		margin-left: -1em;
+		transition: transform 0.2s ease-in-out;
 	}
 
 	a.text::after {
@@ -41,5 +47,10 @@
 
 	li.inview a.text::after {
 		width: 100%;
+	}
+
+	li.inview::before {
+		color: var(--color-accent);
+		transform: scale(1.75);
 	}
 </style>
