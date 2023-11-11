@@ -36,6 +36,7 @@
     "qs": "^6.11.2",
     "svelte-hamburgers": "^4.2.0",
     "svelte-inview": "^4.0.1",
+    "tippy.js": "^6.3.7",
     "unplugin-icons": "^0.17.3"
   }
 }

@@ -2,6 +2,7 @@
 	import RiBuilding2Line from '~icons/ri/building-2-line';
 	import RiQuestionLine from '~icons/ri/question-line';
 	import RiTimeLine from '~icons/ri/time-line';
+	import Tooltip from './Tooltip.svelte';
 	export let name: string;
 	export let place: string;
 	export let href: string;
@@ -15,15 +16,12 @@
 		<span title={name}>
 			{name}
 		</span>
-		<!-- TODO: 詳細 as tooltip -->
-		<button
-			title="詳細"
-			on:click={() => {
-				alert(detail);
-			}}
-		>
-			<RiQuestionLine />
-		</button>
+		<Tooltip>
+			<button slot="trigger" title="詳細">
+				<RiQuestionLine />
+			</button>
+			{detail}
+		</Tooltip>
 	</h3>
 
 	<RiTimeLine height="1em" />
