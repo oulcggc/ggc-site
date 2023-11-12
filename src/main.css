@@ -5,6 +5,10 @@
 	--color-accent: #2c6e99;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 }
