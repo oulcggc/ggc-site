@@ -6,7 +6,7 @@
 		return `lch(${luminance} ${chroma} ${hue} / ${alpha})`;
 	}
 
-	const MAX_BUBBLE_COUNT = 20;
+	const MAX_BUBBLE_COUNT = 30;
 
 	let bubbles: HTMLSpanElement[] = [];
 
@@ -20,16 +20,26 @@
 		return Math.min(Math.max(value, min), max);
 	}
 
-	function animateBubble(bubble: HTMLSpanElement) {
+	let container: HTMLDivElement;
+
+	function animateBubble(old: HTMLSpanElement) {
 		// random lang (not duplicate)
 		let [lang, text] = pickRandomLanguage();
-		const currentLangs = bubbles.map((bubble) => bubble.getAttribute('lang'));
+		const currentLangs = [...document.querySelectorAll('.bubbles a')].map((bubble) =>
+			bubble.getAttribute('lang')
+		) as Lang[];
 		while (currentLangs.includes(lang)) {
 			[lang, text] = pickRandomLanguage();
 		}
+
+		container.removeChild(old);
+
+		const bubble = document.createElement('a');
 		bubble.setAttribute('lang', lang);
 		bubble.textContent = text;
 		bubble.title = LANGUAGE_NAMES_JA[lang];
+		bubble.href = getWikipediaLinkJA(lang);
+		bubble.target = '_blank';
 
 		// random font
 		bubble.style.color = generateRandomHueColorInLCH(50, 50, 0.75);
@@ -43,12 +53,13 @@
 		bubble.style.animationName = 'bubbles';
 		bubble.style.animationDuration = `${Math.random() * 5 + 6}s`;
 		bubble.style.animationTimingFunction = 'ease-in-out';
-		bubble.style.animationIterationCount = 'infinite';
 		bubble.style.animationDelay = `${Math.random() * 5}s`;
 
 		bubble.addEventListener('animationend', () => {
 			animateBubble(bubble);
 		});
+
+		container.appendChild(bubble);
 	}
 
 	function calcWeight(i: number) {
@@ -90,24 +101,23 @@
 
 		return [...sample].map((lang) => [lang, LANGUAGES[lang]]);
 	}
+
+	function getWikipediaLinkJA(lang: Lang) {
+		const name = /^[^（]+/.exec(LANGUAGE_NAMES_JA[lang])?.[0];
+		return `https://ja.wikipedia.org/wiki/${encodeURIComponent(name ?? lang)}`;
+	}
 </script>
 
-<div class="bubbles">
+<div class="bubbles" bind:this={container}>
 	{#each sampleRandomLanguage(MAX_BUBBLE_COUNT) as [lang, text], i}
-		<!-- <span
-			style:color={generateRandomHueColorInLCH(50, 50, 0.5)}
-			style:fontSize={`${Math.random() * 2 + 1}em}`}
-			style:top={`"${Math.random() * 100}%"`}
-			style:left={`calc($${clamp(Math.random() * 100, 10, 90)}% - 50%)`}
+		<a
 			{lang}
 			title={LANGUAGE_NAMES_JA[lang]}
 			bind:this={bubbles[i]}
+			href={getWikipediaLinkJA(lang)}
 		>
 			{text}
-		</span> -->
-		<span {lang} title={LANGUAGE_NAMES_JA[lang]} bind:this={bubbles[i]}>
-			{text}
-		</span>
+		</a>
 	{/each}
 </div>
 
@@ -117,7 +127,7 @@
 			opacity: 0;
 			transform: translateY(50vh);
 		}
-		5% {
+		50% {
 			opacity: 1;
 		}
 		100% {
@@ -135,25 +145,23 @@
 		bottom: 0; */
 	}
 
-	.bubbles span {
+	.bubbles :global(a) {
 		position: absolute;
 		opacity: 0;
 		white-space: nowrap;
+
+		text-decoration: none;
 	}
 
-	.bubbles span:hover {
+	.bubbles :global(a:hover) {
 		animation-play-state: paused;
+		text-decoration: underline;
 	}
 
-	@keyframes bubbles {
-		0% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		100% {
-			opacity: 0;
-			transform: translateY(-100vh);
-		}
+	/* Vertical Writing Systems */
+	.bubbles :global(a[lang$='-Mong']) {
+		writing-mode: vertical-lr;
+		text-orientation: upright;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
