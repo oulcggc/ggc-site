@@ -49,6 +49,12 @@
 		}
 	}
 
+	@media (max-width: 480px) {
+		.about {
+			padding: 2em 1em;
+		}
+	}
+
 	p {
 		margin: 0;
 	}
@@ -64,6 +70,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-wrap: wrap;
 		gap: 0.5em;
 	}
 </style>
