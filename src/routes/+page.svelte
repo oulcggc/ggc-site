@@ -85,6 +85,10 @@
 </footer>
 
 <style>
+	:global(body) {
+		overflow-x: hidden;
+	}
+
 	nav.hamburger {
 		display: none;
 

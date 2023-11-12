@@ -163,7 +163,7 @@
 
 	@media (max-width: 600px) {
 		.bubbles {
-			visibility: hidden;
+			display: none;
 		}
 	}
 </style>

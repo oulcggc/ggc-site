@@ -25,6 +25,12 @@
 		position: relative;
 	}
 
+	@media (max-width: 768px) {
+		.logo {
+			grid-template-columns: 1fr;
+		}
+	}
+
 	h1 {
 		font-size: 2.85rem;
 		font-weight: bold;
