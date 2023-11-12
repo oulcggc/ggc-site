@@ -40,7 +40,7 @@
 <style>
 	.card {
 		padding: 1.5em 1em;
-		margin: 1em 0;
+		margin: 0;
 		border: 1px solid #ccc;
 		border-radius: 5px;
 		display: flex;

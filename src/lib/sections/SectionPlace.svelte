@@ -43,9 +43,10 @@
 
 <style>
 	.cards {
-		display: grid;
 		width: 100%;
-		grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1em;
 	}
 
