@@ -2,7 +2,11 @@
 	font-family: sans-serif;
 
 	--color-theme: #184164;
+	--color-theme-alpha-10: rgba(24, 65, 100, 0.1);
+	--color-theme-alpha-70: rgba(24, 65, 100, 0.7);
+
 	--color-accent: #2c6e99;
+	--color-accent-alpha-20: rgba(44, 110, 153, 0.2);
 }
 
 html {
@@ -42,8 +46,7 @@ a.text::after {
 }
 
 a.text:hover {
-	filter: drop-shadow(0 0 0.1em color-mix(in srgb, var(--color-theme) 10%, transparent))
-		brightness(1.1);
+	filter: drop-shadow(0 0 0.1em var(--color-theme-alpha-10)) brightness(1.1);
 }
 
 a.text:hover::after {

@@ -61,7 +61,7 @@
 
 	a:hover {
 		color: var(--color-accent);
-		filter: drop-shadow(0 0 5px color-mix(in srgb, var(--color-accent) 20%, transparent));
+		filter: drop-shadow(0 0 5px var(--color-accent-alpha-20));
 	}
 
 	@media (max-width: 768px) {

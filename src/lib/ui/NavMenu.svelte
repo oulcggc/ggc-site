@@ -42,8 +42,7 @@
 	}
 
 	li.inview a.text {
-		filter: drop-shadow(0 0 0.1em color-mix(in srgb, var(--color-accent) 20%, transparent))
-			brightness(1.5);
+		filter: drop-shadow(0 0 0.1em var(--color-accent-alpha-20)) brightness(1.5);
 	}
 
 	li.inview a.text::after {
