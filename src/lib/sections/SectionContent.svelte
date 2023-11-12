@@ -152,6 +152,10 @@
 		td {
 			writing-mode: horizontal-tb;
 		}
+
+		th {
+			padding: 0.25em;
+		}
 	}
 
 	.notice {
