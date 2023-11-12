@@ -156,6 +156,10 @@
 	.bubbles :global(a:hover) {
 		animation-play-state: paused;
 		text-decoration: underline;
+		z-index: 2;
+		transform: scale(1.5);
+		filter: brightness(1.2);
+		text-shadow: 0 0 0.5em color-mix(in srgb, currentColor 20%, transparent);
 	}
 
 	/* Vertical Writing Systems */
