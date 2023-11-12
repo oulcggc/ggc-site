@@ -94,6 +94,8 @@
 	@media (max-width: 768px) {
 		.contact {
 			grid-template-columns: 1fr;
+
+			gap: 0;
 		}
 
 		.info {
