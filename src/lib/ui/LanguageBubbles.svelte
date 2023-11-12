@@ -122,6 +122,8 @@
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&family=Noto+Sans+Mongolian&family=Uchen&display=swap');
+
 	@keyframes -global-bubbles {
 		0% {
 			opacity: 0;
@@ -162,10 +164,18 @@
 		text-shadow: 0 0 0.5em color-mix(in srgb, currentColor 20%, transparent);
 	}
 
-	/* Vertical Writing Systems */
+	.bubbles :global(a) {
+		font-family: 'Noto Sans Display', sans-serif;
+	}
+
+	/* Mongolian */
 	.bubbles :global(a[lang$='-Mong']) {
 		writing-mode: vertical-lr;
-		text-orientation: upright;
+		font-family: 'Noto Sans Mongolian', sans-serif;
+	}
+
+	.bubbles :global(a[lang$='-Tibt']) {
+		font-family: 'Uchen', serif;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
