@@ -21,7 +21,7 @@
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		align-items: start;
+		align-items: flex-start;
 		gap: 0.25em;
 		line-height: 1.5;
 		position: relative;

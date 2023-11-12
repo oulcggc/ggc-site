@@ -110,8 +110,8 @@
 		left: 0;
 
 		display: flex;
-		align-items: end;
-		justify-content: start;
+		align-items: flex-end;
+		justify-content: flex-start;
 		flex-direction: column;
 		gap: 1em;
 
