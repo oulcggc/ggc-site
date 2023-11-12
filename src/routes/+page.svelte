@@ -113,12 +113,16 @@
 		align-items: end;
 		justify-content: start;
 		flex-direction: column;
-		gap: 1.5em;
+		gap: 1em;
+
+		height: 100vh;
+
+		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+		z-index: 2;
 	}
 
 	nav.hamburger[data-open='true'] .hamburger-container {
 		bottom: auto;
-		height: 100vh;
 		background: color-mix(in srgb, var(--color-theme) 70%, transparent);
 		backdrop-filter: blur(0.5em);
 		z-index: 100;
@@ -126,17 +130,23 @@
 
 	nav.hamburger .menu {
 		width: auto;
-		padding-left: 2em;
 		opacity: 0;
-		transition: opacity 0.2s ease-in-out;
+		transition: opacity 1s ease-in-out;
 
 		font-size: 1.5em;
 
 		color: white;
+
+		pointer-events: none;
+
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
 	}
 
 	nav.hamburger[data-open='true'] .menu {
 		opacity: 1;
+		pointer-events: all;
 	}
 
 	nav.float {
