@@ -138,6 +138,7 @@
 	.bubbles span {
 		position: absolute;
 		opacity: 0;
+		white-space: nowrap;
 	}
 
 	.bubbles span:hover {
