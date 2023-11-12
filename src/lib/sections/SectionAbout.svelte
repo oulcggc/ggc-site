@@ -24,7 +24,7 @@
 	</p>
 	<p>一緒に、言語について学び、楽しみましょう！</p>
 	<p style="text-align: right;">
-		<a href="#" class="text" title="制作中">サークル沿革(TBD)</a>
+		<a href={null} class="text" title="制作中">サークル沿革(TBD)</a>
 		<a href="#contact" class="text">お問い合わせ</a>
 	</p>
 </div>
