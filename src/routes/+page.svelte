@@ -6,13 +6,10 @@
 
 	import { SECTIONS } from '$lib/sections';
 
-	import { Hamburger } from 'svelte-hamburgers';
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
 	import Section from '$lib/sections/Section.svelte';
 	import Sections from '$lib/sections/Sections.svelte';
 	import type { Writable } from 'svelte/store';
-
-	let hamburgerOpen = false;
 
 	let inviews: Writable<boolean[]>;
 </script>
@@ -49,15 +46,8 @@
 	<meta property="twitter:image" content="https://ggc-osaka.pages.dev/banner.png" />
 </svelte:head>
 
-<svelte:window on:resize={() => (hamburgerOpen = false)} />
-
-<nav class="hamburger" data-open={hamburgerOpen}>
-	<div class="hamburger-container">
-		<Hamburger bind:open={hamburgerOpen} --padding={0} />
-		<div class="menu">
-			<HamburgerMenu sections={SECTIONS} bind:open={hamburgerOpen} />
-		</div>
-	</div>
+<nav class="hamburger">
+	<HamburgerMenu sections={SECTIONS} />
 </nav>
 
 <nav class="float">
@@ -98,56 +88,6 @@
 
 		--color: var(--color-accent);
 		--active-color: white;
-	}
-
-	.hamburger-container {
-		padding: 1.75em 2em;
-
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		height: auto;
-
-		display: flex;
-		align-items: flex-end;
-		justify-content: flex-start;
-		flex-direction: column;
-		gap: 1em;
-
-		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
-		z-index: 2;
-	}
-
-	nav.hamburger[data-open='true'] .hamburger-container {
-		bottom: auto;
-		background: var(--color-theme-alpha-70);
-		backdrop-filter: blur(0.5em);
-		z-index: 100;
-	}
-
-	nav.hamburger .menu {
-		width: auto;
-		opacity: 0;
-		transition: opacity 1s ease-in-out 0.5s, height 1s ease-in-out;
-
-		font-size: 1.5em;
-
-		color: white;
-
-		pointer-events: none;
-
-		display: flex;
-		flex-direction: column;
-		gap: 0.5em;
-
-		height: 0;
-	}
-
-	nav.hamburger[data-open='true'] .menu {
-		opacity: 1;
-		pointer-events: all;
-		height: 100vh;
 	}
 
 	nav.float {
