@@ -33,6 +33,8 @@
 		align-items: stretch;
 		justify-content: stretch;
 		gap: 2em;
+
+		padding: 1em;
 	}
 
 	hr {
