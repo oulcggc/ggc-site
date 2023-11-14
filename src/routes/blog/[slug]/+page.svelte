@@ -1,11 +1,16 @@
 <script lang="ts">
 	import Avatar from '$lib/ui/Avatar.svelte';
-	import SnsIcon from '$lib/ui/SNSIcon.svelte';
 	import Article from '$lib/ui/blog/Article.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
-	import { createFacebookShareURL, createLineShareURL, createTwitterShareURL } from '$lib/util/sns';
-	import { onMount } from 'svelte';
+	import {
+		SNS,
+		createFacebookShareURL,
+		createLineShareURL,
+		createTwitterShareURL
+	} from '$lib/util/sns';
 	import type { PageData } from './$types';
+	import ArticleShare from '$lib/ui/blog/ArticleShare.svelte';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -13,17 +18,14 @@
 	console.log('$$props', $$props);
 	console.log('data', data);
 
-	let twitterShareURL: string;
-	let facebookShareURL: string;
-	let lineShareURL: string;
-
-	onMount(() => {
-		twitterShareURL = createTwitterShareURL(`${article.title}\n阪大言語サークルGGC @oulcggc`);
-		facebookShareURL = createFacebookShareURL();
-		lineShareURL = createLineShareURL();
-	});
-
-	import RiShareCircleFill from '~icons/ri/share-circle-fill';
+	const shareLinks = new Map<SNS, string>([
+		[
+			'twitter',
+			createTwitterShareURL($page.url.toString(), `${article.title}\n阪大言語サークルGGC @oulcggc`)
+		],
+		['facebook', createFacebookShareURL($page.url.toString())],
+		['line', createLineShareURL($page.url.toString())]
+	] as [SNS, string][]);
 </script>
 
 <main>
@@ -43,26 +45,7 @@
 		>
 		<!-- <span>{data.publishedAt}</span> -->
 	</div>
-	<div class="share">
-		<a href={twitterShareURL} title="X（旧Twitter）でシェア" target="_blank">
-			<SnsIcon type="twitter" />
-		</a>
-		<a href={lineShareURL} title="LINEでシェア" target="_blank">
-			<SnsIcon type="line" />
-		</a>
-		<a href={facebookShareURL} title="Facebookでシェア" target="_blank">
-			<SnsIcon type="facebook" />
-		</a>
-		<button
-			class="icon"
-			title="URLをコピー"
-			on:click={() => {
-				navigator.clipboard.writeText(location.href);
-			}}
-		>
-			<RiShareCircleFill height="1em" />
-		</button>
-	</div>
+	<ArticleShare links={shareLinks} />
 	<Article content={article.body} />
 	<div class="tags">
 		{#each article.tags as tag}
@@ -134,57 +117,6 @@
 		grid-area: name;
 		align-self: end;
 		font-weight: bold;
-	}
-
-	.share {
-		grid-area: s;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		gap: 0.5em;
-		font-size: 1.25em;
-		padding-right: 0.5em;
-	}
-
-	.share a {
-		color: #a8a8a8;
-		text-decoration: none;
-		transition: color 0.2s ease-in-out;
-		font-size: 1.25em;
-
-		display: contents;
-	}
-
-	.share a:hover {
-		color: var(--color-theme);
-	}
-
-	.share a:visited {
-		color: inherit;
-	}
-
-	button.icon {
-		background: none;
-		border: none;
-		cursor: pointer;
-		font-size: inherit;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	button.icon:hover {
-		color: var(--color-theme);
-	}
-
-	.share button.icon {
-		color: #a8a8a8;
-		transition: color 0.2s ease-in-out;
-	}
-
-	.share button.icon:hover {
-		color: var(--color-theme);
 	}
 
 	.tags {
