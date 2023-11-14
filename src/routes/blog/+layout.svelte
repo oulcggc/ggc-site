@@ -22,6 +22,9 @@
 
 <style>
 	header {
+		position: relative;
+		z-index: 2;
+
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -56,5 +59,12 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75em;
+	}
+
+	@media (max-width: 768px) {
+		header {
+			margin-bottom: 0;
+			box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+		}
 	}
 </style>

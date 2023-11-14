@@ -194,4 +194,11 @@
 		flex-wrap: wrap;
 		gap: 0.5em;
 	}
+
+	@media (max-width: 800px) {
+		main > :global(*:not(figure)) {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+	}
 </style>
