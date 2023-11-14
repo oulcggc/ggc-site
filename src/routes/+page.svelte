@@ -106,16 +106,14 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		bottom: 0;
 		left: 0;
+		height: auto;
 
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-start;
 		flex-direction: column;
 		gap: 1em;
-
-		height: 100vh;
 
 		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
 		z-index: 2;
@@ -131,7 +129,7 @@
 	nav.hamburger .menu {
 		width: auto;
 		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		transition: opacity 1s ease-in-out 0.5s, height 1s ease-in-out;
 
 		font-size: 1.5em;
 
@@ -142,11 +140,14 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
+
+		height: 0;
 	}
 
 	nav.hamburger[data-open='true'] .menu {
 		opacity: 1;
 		pointer-events: all;
+		height: 100vh;
 	}
 
 	nav.float {
