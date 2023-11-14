@@ -6,7 +6,7 @@
 <div class="logo">
 	<LanguageBubbles />
 	<div class="symbol">
-		<h1>阪大<span>言語サークル</span></h1>
+		<h1><span>阪大</span><span>言語サークル</span></h1>
 		<img src={GGCLogo} alt="GGC" />
 	</div>
 	<LanguageBubbles />
@@ -31,6 +31,17 @@
 		}
 	}
 
+	@media (max-width: 480px) {
+		.logo h1 {
+			font-size: 2.5rem;
+		}
+
+		.logo img {
+			width: 15em;
+			height: 15em;
+		}
+	}
+
 	h1 {
 		font-size: 2.85rem;
 		font-weight: bold;
@@ -46,7 +57,8 @@
 	}
 
 	span {
-		word-break: keep-all;
+		white-space: nowrap;
+		/* word-break: keep-all; */
 	}
 
 	.catchphrase {
