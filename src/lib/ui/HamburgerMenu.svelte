@@ -6,7 +6,7 @@
 	import { Hamburger } from 'svelte-hamburgers';
 	import SNSIcon from '$lib/ui/SNSIcon.svelte';
 
-	export let sections: { id: string; name: string }[] = [];
+	export let links: { href: string; name: string }[] = [];
 
 	let open: boolean;
 </script>
@@ -14,7 +14,9 @@
 <svelte:window on:resize={() => (open = false)} on:scroll={() => (open = false)} />
 
 <div class="hamburger-container" data-open={open}>
-	<Hamburger bind:open --padding={0} />
+	<div class="hamburger">
+		<Hamburger bind:open --padding={0} />
+	</div>
 	<div class="menu" data-open={open}>
 		{#if open}
 			<hr
@@ -26,7 +28,7 @@
 				}}
 			/>
 			<div role="menu" class="links">
-				{#each sections as { id, name }, i (i)}
+				{#each links as { href, name }, i (i)}
 					<p
 						transition:fly|global={{
 							y: -20,
@@ -36,7 +38,7 @@
 						}}
 					>
 						<!-- transition:fly={{ y: -15, delay: 50 * i }} -->
-						<a href={`#${id}`} on:click={() => (open = false)}>{name}</a>
+						<a {href} on:click={() => (open = false)}>{name}</a>
 					</p>
 				{/each}
 			</div>
@@ -70,9 +72,7 @@
 
 <style>
 	.hamburger-container {
-		padding: 1.75em 2em;
-
-		position: absolute;
+		position: fixed;
 		top: 0;
 		right: 0;
 		left: 0;
@@ -82,7 +82,7 @@
 		align-items: flex-end;
 		justify-content: flex-start;
 		flex-direction: column;
-		gap: 1em;
+		gap: 0.5em;
 
 		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
 		z-index: 2;
@@ -93,6 +93,36 @@
 		background: var(--color-theme-alpha-70);
 		backdrop-filter: blur(0.5em);
 		z-index: 100;
+	}
+
+	.hamburger {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 0.75rem;
+		margin-right: 0.75rem;
+		margin-top: 0.75rem;
+		border-bottom-left-radius: 1em;
+		border-top-right-radius: 1em;
+
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(2px);
+
+		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+	}
+
+	.hamburger :global(button.hamburger) {
+		display: flex;
+		height: 2em;
+		width: 2em;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hamburger-container[data-open='true'] .hamburger {
+		background: none;
+		backdrop-filter: none;
 	}
 
 	.menu {
@@ -111,6 +141,8 @@
 		gap: 0.5em;
 
 		height: 0;
+
+		margin-right: 1.5rem;
 	}
 
 	.hamburger-container[data-open='true'] .menu {

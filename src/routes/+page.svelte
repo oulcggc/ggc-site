@@ -47,7 +47,7 @@
 </svelte:head>
 
 <nav class="hamburger">
-	<HamburgerMenu sections={SECTIONS} />
+	<HamburgerMenu links={SECTIONS.map(({ id, name }) => ({ href: `#${id}`, name }))} />
 </nav>
 
 <nav class="float">

@@ -1,8 +1,14 @@
 <script>
-	import NavMenu from '$lib/ui/NavMenu.svelte';
 	import GGCLogo from '$assets/ggc_logo_1240x1240.jpg';
 	import { page } from '$app/stores';
+	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
 	$: console.log($page);
+
+	const LINKS = [
+		{ href: '/', name: 'ホーム' },
+		{ href: '/blog', name: 'ブログ' },
+		{ href: '/#contact', name: 'お問い合わせ' }
+	];
 </script>
 
 <header>
@@ -11,10 +17,14 @@
 		<span> 阪大言語サークルGGC </span>
 	</a>
 
-	<nav>
-		<a class="text" href="/"> ホーム </a>
-		<a class="text" href="/blog"> ブログ </a>
-		<a class="text" href="/#contact">お問い合わせ</a>
+	<nav class="normal">
+		{#each LINKS as link}
+			<a class="text" href={link.href}>{link.name}</a>
+		{/each}
+	</nav>
+
+	<nav class="hamburger">
+		<HamburgerMenu links={LINKS} />
 	</nav>
 </header>
 
@@ -55,16 +65,38 @@
 		color: var(--color-theme);
 	}
 
-	nav {
+	@media (max-width: 768px) {
+		header {
+			margin-bottom: 0;
+			box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+		}
+	}
+
+	nav.normal {
 		display: flex;
 		align-items: center;
 		gap: 0.75em;
 	}
 
+	nav.hamburger {
+		display: none;
+
+		text-align: right;
+		position: relative;
+		height: 4rem;
+		width: 4rem;
+
+		--color: var(--color-accent);
+		--active-color: white;
+	}
+
 	@media (max-width: 768px) {
-		header {
-			margin-bottom: 0;
-			box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+		nav.hamburger {
+			display: block;
+		}
+
+		nav.normal {
+			display: none;
 		}
 	}
 </style>
