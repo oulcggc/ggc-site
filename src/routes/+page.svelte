@@ -2,8 +2,6 @@
 	import NavMenu from '$lib/ui/NavMenu.svelte';
 	import SideSNS from '$lib/ui/SideSNS.svelte';
 
-	import RiCopyrightLine from '~icons/ri/copyright-line';
-
 	import { SECTIONS } from '$lib/sections';
 
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
@@ -66,14 +64,6 @@
 	</Sections>
 </main>
 
-<hr />
-
-<footer>
-	<p>
-		<RiCopyrightLine /> 2022-2023 阪大言語サークルGGC
-	</p>
-</footer>
-
 <style>
 	:global(body) {
 		overflow-x: hidden;
@@ -115,16 +105,5 @@
 		nav.float {
 			display: none;
 		}
-	}
-
-	footer p {
-		margin: 0;
-
-		padding: 1em;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.25em;
 	}
 </style>

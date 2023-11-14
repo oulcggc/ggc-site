@@ -15,14 +15,6 @@
 	{/each}
 </main>
 
-<hr />
-
-<footer>
-	<p>
-		<RiCopyrightLine /> 2022-2023 阪大言語サークルGGC
-	</p>
-</footer>
-
 <style>
 	main {
 		max-width: 800px;
@@ -35,20 +27,5 @@
 		gap: 2em;
 
 		padding: 1em;
-	}
-
-	hr {
-		margin-top: 2em;
-	}
-
-	footer p {
-		margin: 0;
-
-		padding: 1em;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.25em;
 	}
 </style>
