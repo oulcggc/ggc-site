@@ -9,6 +9,8 @@
 	import Sections from '$lib/sections/Sections.svelte';
 	import type { Writable } from 'svelte/store';
 
+	import BackToTop from '$lib/ui/BackToTop.svelte';
+
 	let inviews: Writable<boolean[]>;
 </script>
 
@@ -63,6 +65,8 @@
 		{/each}
 	</Sections>
 </main>
+
+<BackToTop />
 
 <style>
 	:global(body) {
