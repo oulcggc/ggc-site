@@ -1,6 +1,7 @@
 <script lang="ts">
 	// TODO: LINK TO ACCESS MAP
 	import PlaceCard from '$lib/ui/PlaceCard.svelte';
+	import Minoh520 from '$assets/classroom_in_minoh.jpg";
 </script>
 
 <h2>活動拠点</h2>
@@ -10,7 +11,7 @@
 		id="minoh"
 		name="外520講義室"
 		campus="箕面キャンパス"
-		photo="https://picsum.photos/seed/1/300/200"
+		photo=[Minoh520]
 		time="月～水曜日 18:30–20:15"
 		access="https://www1.lang.osaka-u.ac.jp/access.html"
 		facility="https://www.osaka-u.ac.jp/ja/guide/campus/projects/minoh/"
