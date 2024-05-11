@@ -97,6 +97,10 @@
 
 	img {
 		width: 100%;
+		aspect-ratio: 3 / 2;
+		height: 220px;
+
+		object-fit: cover;
 	}
 
 	h3,
