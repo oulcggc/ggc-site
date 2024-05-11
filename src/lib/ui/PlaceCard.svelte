@@ -75,7 +75,7 @@
 		transition: filter 0.2s ease-in-out;
 	}
 
-	.photo::after {
+	/* .photo::after {
 		content: '（ここに部屋の写真）';
 		display: flex;
 		justify-content: center;
@@ -89,7 +89,7 @@
 		right: 0;
 		bottom: 0;
 		z-index: 2;
-	}
+	} */
 
 	a.photo:not(:hover):not(:focus) {
 		filter: blur(1px) brightness(0.8);
