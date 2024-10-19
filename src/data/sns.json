@@ -1,17 +1,22 @@
 [
-    {
-        "type": "twitter",
-        "name": "X（旧Twitter）",
-        "link": "https://twitter.com/oulcggc"
-    },
-    {
-        "type": "instagram",
-        "name": "Instagram",
-        "link": "https://www.instagram.com/oulcggc/"
-    },
-    {
-        "type": "line",
-        "name": "LINEオープンチャット",
-        "link": "https://line.me/R/ti/g2/jOBO76sliRdBlyMGkAv7XnwW4_ijYk5y97wCAg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
-    }
+	{
+		"type": "twitter",
+		"name": "X（旧Twitter）",
+		"link": "https://twitter.com/oulcggc"
+	},
+	{
+		"type": "instagram",
+		"name": "Instagram",
+		"link": "https://www.instagram.com/oulcggc/"
+	},
+	{
+		"type": "line",
+		"name": "LINEオープンチャット",
+		"link": "https://line.me/R/ti/g2/jOBO76sliRdBlyMGkAv7XnwW4_ijYk5y97wCAg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+	},
+	{
+		"type": "youtube",
+		"name": "YouTubeチャンネル",
+		"link": "https://www.youtube.com/@oulcggc"
+	}
 ]

@@ -8,6 +8,7 @@
 	import RiLinksFill from '~icons/ri/links-fill';
 	import RiLineFill from '~icons/ri/line-fill';
 	import RiFacebookCircleFill from '~icons/ri/facebook-circle-fill';
+	import RiYoutubeFill from '~icons/ri/youtube-fill';
 </script>
 
 {#if type === 'twitter'}
@@ -20,6 +21,8 @@
 	<RiLineFill height="1em" />
 {:else if type === 'facebook'}
 	<RiFacebookCircleFill height="1em" />
+{:else if type === 'youtube'}
+	<RiYoutubeFill height="1em" />
 {:else}
 	<RiLinksFill height="1em" />
 {/if}
