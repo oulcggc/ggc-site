@@ -7,15 +7,14 @@
 	import SNSIcon from '$lib/ui/SNSIcon.svelte';
 
 	export let links: { href: string; name: string }[] = [];
-
-	let open: boolean;
+	export let open: boolean = false;
 </script>
 
 <svelte:window on:resize={() => (open = false)} on:scroll={() => (open = false)} />
 
 <div class="hamburger-container" data-open={open}>
 	<div class="hamburger">
-		<Hamburger bind:open --padding={0} />
+		<Hamburger bind:open --padding={0} on:click />
 	</div>
 	<div class="menu" data-open={open}>
 		{#if open}

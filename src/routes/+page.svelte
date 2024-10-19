@@ -7,11 +7,15 @@
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
 	import Section from '$lib/sections/Section.svelte';
 	import Sections from '$lib/sections/Sections.svelte';
+	import TopSNS from '$lib/ui/TopSNS.svelte';
+
 	import type { Writable } from 'svelte/store';
 
 	import BackToTop from '$lib/ui/BackToTop.svelte';
 
 	let inviews: Writable<boolean[]>;
+
+	let hamburgerMenuOpen: boolean = false;
 </script>
 
 <svelte:head>
@@ -47,7 +51,14 @@
 </svelte:head>
 
 <nav class="hamburger">
-	<HamburgerMenu links={SECTIONS.map(({ id, name }) => ({ href: `#${id}`, name }))} />
+	{#if !hamburgerMenuOpen}
+		<TopSNS />
+	{/if}
+
+	<HamburgerMenu
+		links={SECTIONS.map(({ id, name }) => ({ href: `#${id}`, name }))}
+		bind:open={hamburgerMenuOpen}
+	/>
 </nav>
 
 <nav class="float">
