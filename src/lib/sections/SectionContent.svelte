@@ -3,7 +3,7 @@
 	import RiCalendarTodoFill from '~icons/ri/calendar-todo-fill';
 </script>
 
-<h2>活動内容</h2>
+<h2>活動内容（春学期）</h2>
 
 <table>
 	<thead>
@@ -24,21 +24,13 @@
 			<td />
 			<td />
 			<td>
-				<CalenderEvent
-					name="言語交換"
-					place="OUプ@豊中"
-					href="#oumlp"
-					time="12:00–15:00"
-					color="g"
-					detail="昼には集まった人たちで、自分の話せる言語や勉強している言語について教えあいます。"
-				/>
 			</td>
 		</tr>
 		<tr>
 			<th>夜</th>
 			<td>
 				<CalenderEvent
-					name="言語交換"
+					name="言語類型論"
 					place="520@箕面"
 					href="#minoh"
 					time="18:30–20:15"
@@ -48,7 +40,7 @@
 			</td>
 			<td>
 				<CalenderEvent
-					name="共通語学"
+					name="アラビア語"
 					place="520@箕面"
 					href="#minoh"
 					time="18:30–20:15"
@@ -58,7 +50,7 @@
 			</td>
 			<td>
 				<CalenderEvent
-					name="個別発表"
+					name="スウェーデン語"
 					place="520@箕面"
 					href="#minoh"
 					time="18:30–20:15"
@@ -67,6 +59,7 @@
 				/>
 			</td>
 			<td>
+				<!-- 
 				<CalenderEvent
 					name="個別発表・参加型"
 					place="SSB@豊中"
@@ -75,10 +68,19 @@
 					color="b"
 					detail="部員が語学や言語学にまつわることについて教えあいます。そのほか参加型の企画を行うこともあります。"
 				/>
+				-->
 			</td>
 			<td>
 				<CalenderEvent
-					name="古典語勉強会"
+					name="インドネシア語"
+					place="SSB@豊中"
+					href="#tynkb"
+					time="18:00–19:45"
+					color="b"
+					detail="夜にはみんなでラテン語など古典語を勉強しています。"
+				/>
+				<CalenderEvent
+					name="ロマンス語（ラテン語含）"
 					place="SSB@豊中"
 					href="#tynkb"
 					time="18:00–19:45"
@@ -142,6 +144,7 @@
 
 	td {
 		vertical-align: top;
+		min-width: 8em;
 	}
 
 	@media (max-width: 800px) {
@@ -155,6 +158,11 @@
 
 		th {
 			padding: 0.25em;
+		}
+
+		td {
+			min-width: 20%;
+			min-height: 5em;
 		}
 	}
 

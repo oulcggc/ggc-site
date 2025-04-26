@@ -74,6 +74,7 @@
 		padding: 0.2em 0.5em;
 		border-top-right-radius: 0.25em;
 		border-bottom-right-radius: 0.25em;
+		margin-bottom: 0.25em;
 
 		display: grid;
 		grid-template-columns: auto 1fr;
