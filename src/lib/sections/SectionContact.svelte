@@ -17,8 +17,8 @@
 		<p>留学生・大学院生・他大生大歓迎！メンバーは暇な時だけ参加しているので、兼部も自由です。</p>
 
 		<p>
-			<a href={null} class="text" title="制作中">注意事項(TBD)</a>
-			<a href={null} class="text" title="制作中">会則(TBD)</a>
+			<a href="/cautions" class="text" title="制作中">注意事項(TBD)</a>
+			<a href="/bylaws" class="text" title="制作中">会則(TBD)</a>
 		</p>
 	</div>
 
