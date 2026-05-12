@@ -30,62 +30,52 @@
 			<th>夜</th>
 			<td>
 				<CalenderEvent
-					name="言語類型論"
-					place="520@箕面"
-					href="#minoh"
-					time="18:30–20:15"
-					color="r"
-					detail="集まった人たちで、自分の話せる言語や勉強している言語について教えあいます。"
+					name="初級アイスランド語"
+					place="SSB@豊中"
+					href="#tynkb"
+					time="18:30–19:50"
+					color="b"
+					detail="みんなで同じ言語を学びます。"
 				/>
 			</td>
 			<td>
 				<CalenderEvent
-					name="アラビア語"
+					name="初級ジョージア語"
+					place="SSB@豊中"
+					href="#tynkb"
+					time="18:30–19:50"
+					color="b"
+					detail="みんなで同じ言語を学びます。"
+				/>
+			</td>
+			<td>
+				<CalenderEvent
+					name="ナウル語"
 					place="520@箕面"
 					href="#minoh"
-					time="18:30–20:15"
+					time="18:30–20:10"
 					color="r"
 					detail="みんなで同じ言語を学びます。"
 				/>
 			</td>
 			<td>
 				<CalenderEvent
-					name="スウェーデン語"
-					place="520@箕面"
-					href="#minoh"
-					time="18:30–20:15"
-					color="r"
+					name="綴りと発音が一致しているという幻想"
+					place="SSB@豊中"
+					href="#tynkb"
+					time="18:30–19:50"
+					color="b"
 					detail="部員が語学や言語学にまつわることについて教えあいます。"
 				/>
 			</td>
 			<td>
-				<!-- 
 				<CalenderEvent
-					name="個別発表・参加型"
+					name="ワードル（ゲーム）"
 					place="SSB@豊中"
 					href="#tynkb"
-					time="18:00–19:45"
+					time="18:30–19:50"
 					color="b"
-					detail="部員が語学や言語学にまつわることについて教えあいます。そのほか参加型の企画を行うこともあります。"
-				/>
-				-->
-			</td>
-			<td>
-				<CalenderEvent
-					name="インドネシア語"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:00–19:45"
-					color="b"
-					detail="夜にはみんなでラテン語など古典語を勉強しています。"
-				/>
-				<CalenderEvent
-					name="ロマンス語（ラテン語含）"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:00–19:45"
-					color="b"
-					detail="夜にはみんなでラテン語など古典語を勉強しています。"
+					detail="ことばに関するゲームをみんなで楽しみます。"
 				/>
 			</td>
 		</tr>
