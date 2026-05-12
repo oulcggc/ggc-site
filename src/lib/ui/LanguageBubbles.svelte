@@ -161,8 +161,10 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.bubbles {
-			visibility: hidden;
+		.bubbles a {
+			animation: none !important;
+			opacity: 1;
+			transform: none;
 		}
 	}
 
