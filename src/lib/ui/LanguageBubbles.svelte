@@ -160,14 +160,6 @@
 		font-family: 'Uchen', serif;
 	}
 
-	@media (prefers-reduced-motion: reduce) {
-		.bubbles a {
-			animation: none !important;
-			opacity: 1;
-			transform: none;
-		}
-	}
-
 	@media (max-width: 600px) {
 		.bubbles {
 			display: none;
