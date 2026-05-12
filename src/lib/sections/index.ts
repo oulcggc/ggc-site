@@ -3,6 +3,7 @@ import SectionPlace from '$lib/sections/SectionPlace.svelte';
 import SectionContact from '$lib/sections/SectionContact.svelte';
 import SectionHome from '$lib/sections/SectionHome.svelte';
 import SectionAbout from '$lib/sections/SectionAbout.svelte';
+import SectionYouTube from '$lib/sections/SectionYouTube.svelte';
 import SectionBlog from './SectionBlog.svelte';
 
 export type Section = {
@@ -21,6 +22,11 @@ export const SECTIONS = [
 		name: 'ブログ',
 		id: 'blog',
 		component: SectionBlog
+	},
+	{
+		name: '動画',
+		id: 'videos',
+		component: SectionYouTube
 	},
 	{
 		name: 'サークル紹介',
