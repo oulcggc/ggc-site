@@ -21,7 +21,7 @@
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen
-		/>
+		></iframe>
 	{:else}
 		<button type="button" class="play" aria-label={`動画を再生: ${title}`} on:click={activate}>
 			<img src={thumbUrl} alt="" loading="lazy" decoding="async" />
@@ -92,7 +92,9 @@
 	.badge-bg {
 		fill: #212121;
 		opacity: 0.85;
-		transition: fill 0.2s ease, opacity 0.2s ease;
+		transition:
+			fill 0.2s ease,
+			opacity 0.2s ease;
 	}
 
 	.play:hover .badge,

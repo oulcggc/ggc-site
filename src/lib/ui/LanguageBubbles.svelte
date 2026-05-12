@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-dom-manipulating, svelte/prefer-svelte-reactivity */
 	import { LANGUAGES, LANGUAGE_NAMES_JA, type Lang } from '$data/languages';
 	import { onMount } from 'svelte';
 	function generateRandomHueColorInLCH(chroma: number, luminance: number, alpha: number) {

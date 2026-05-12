@@ -8,6 +8,6 @@ export const load: PageServerLoad = async () => {
 		return { articles };
 	} catch (e) {
 		console.error(e);
-		throw error(500, 'Unable to fetch articles');
+		error(500, 'Unable to fetch articles');
 	}
 };

@@ -10,6 +10,6 @@ export const GET = async ({ setHeaders }): Promise<Response> => {
 		return json({ items });
 	} catch (e) {
 		console.error(e);
-		throw error(500, 'Unable to fetch YouTube videos');
+		error(500, 'Unable to fetch YouTube videos');
 	}
 };

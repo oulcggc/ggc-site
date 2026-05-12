@@ -10,10 +10,10 @@ export const load: PageServerLoad = async ({ params: { slug } }) => {
 			query: { slug }
 		});
 
-		if (!article) throw error(404, 'Article not found');
+		if (!article) error(404, 'Article not found');
 		return { article };
 	} catch (e) {
 		console.error(e);
-		throw error(500, 'Unable to fetch article');
+		error(500, 'Unable to fetch article');
 	}
 };

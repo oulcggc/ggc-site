@@ -1,6 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-// Unplugin Icons
 import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
@@ -10,7 +9,7 @@ export default defineConfig({
 			compiler: 'svelte'
 		})
 	],
-	ssr: {
-		noExternal: '@vespaiach/axios-fetch-adapter'
+	optimizeDeps: {
+		exclude: ['svelte-hamburgers']
 	}
 });

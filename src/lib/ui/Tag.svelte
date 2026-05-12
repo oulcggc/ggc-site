@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let name: string;
-	export let slug: string;
+	export const slug: string = '';
 </script>
 
 <div class="tag" title="キーワード">
