@@ -82,6 +82,9 @@
 	</tbody>
 </table>
 <p class="notice">※いずれも変更の可能性あり</p>
+<p class="notice">
+	※当ホームページの情報は参考用であり、頻繁には更新されません。実際にご参加の際は、Instagram・LINEオープンチャット等のSNSもあわせてご確認のうえ、最新情報をご確認ください。
+</p>
 
 <a
 	href="https://sites.google.com/view/ggccalendar/%E3%83%9B%E3%83%BC%E3%83%A0"
