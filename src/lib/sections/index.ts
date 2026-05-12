@@ -3,6 +3,7 @@ import SectionPlace from '$lib/sections/SectionPlace.svelte';
 import SectionContact from '$lib/sections/SectionContact.svelte';
 import SectionHome from '$lib/sections/SectionHome.svelte';
 import SectionAbout from '$lib/sections/SectionAbout.svelte';
+import SectionHistory from '$lib/sections/SectionHistory.svelte';
 import SectionYouTube from '$lib/sections/SectionYouTube.svelte';
 import SectionBlog from './SectionBlog.svelte';
 
@@ -32,6 +33,11 @@ export const SECTIONS = [
 		name: 'サークル紹介',
 		id: 'about',
 		component: SectionAbout
+	},
+	{
+		name: '沿革',
+		id: 'history',
+		component: SectionHistory
 	},
 	{
 		name: '活動内容',
