@@ -1,122 +1,113 @@
 <script lang="ts">
 	import { LANGUAGES, LANGUAGE_NAMES_JA, type Lang } from '$data/languages';
-	import { onMount } from 'svelte';
-	function generateRandomHueColorInLCH(chroma: number, luminance: number, alpha: number) {
-		const hue = Math.random() * 360;
-		return `lch(${luminance} ${chroma} ${hue} / ${alpha})`;
-	}
 
 	const MAX_BUBBLE_COUNT = 30;
 
-	let bubbles: HTMLSpanElement[] = [];
+	type BubbleState = {
+		key: number;
+		lang: Lang;
+		text: string;
+		color: string;
+		fontSize: string;
+		top: string;
+		left: string;
+		duration: string;
+		delay: string;
+	};
 
-	onMount(() => {
-		for (const bubble of bubbles) {
-			animateBubble(bubble);
-		}
-	});
-
-	function clamp(value: number, min: number, max: number) {
-		return Math.min(Math.max(value, min), max);
+	function clamp(v: number, lo: number, hi: number) {
+		return Math.min(Math.max(v, lo), hi);
 	}
 
-	let container: HTMLDivElement;
-
-	function animateBubble(old: HTMLSpanElement) {
-		// random lang (not duplicate)
-		let [lang, text] = pickRandomLanguage();
-		const currentLangs = [...document.querySelectorAll('.bubbles a')].map((bubble) =>
-			bubble.getAttribute('lang')
-		) as Lang[];
-		while (currentLangs.includes(lang)) {
-			[lang, text] = pickRandomLanguage();
-		}
-
-		container.removeChild(old);
-
-		const bubble = document.createElement('a');
-		bubble.setAttribute('lang', lang);
-		bubble.textContent = text;
-		bubble.title = LANGUAGE_NAMES_JA[lang];
-		bubble.href = getWikipediaLinkJA(lang);
-		bubble.target = '_blank';
-
-		// random font
-		bubble.style.color = generateRandomHueColorInLCH(50, 50, 0.75);
-		bubble.style.fontSize = `${Math.random() * 2 + 1}em`;
-
-		// random position
-		bubble.style.top = `${Math.random() * 100}%`;
-		bubble.style.left = `calc(${clamp(Math.random() * 100, 10, 90)}% - 2ch)`;
-
-		// random animation
-		bubble.style.animationName = 'bubbles';
-		bubble.style.animationDuration = `${Math.random() * 5 + 6}s`;
-		bubble.style.animationTimingFunction = 'ease-in-out';
-		bubble.style.animationDelay = `${Math.random() * 5}s`;
-
-		bubble.addEventListener('animationend', () => {
-			animateBubble(bubble);
-		});
-
-		container.appendChild(bubble);
+	function randomColor() {
+		return `lch(50% 50 ${Math.random() * 360} / 0.75)`;
 	}
 
-	function calcWeight(i: number) {
-		return 1 / (i + 1);
-	}
+	const calcWeight = (i: number) => 1 / (i + 1);
 
-	function pickRandomLanguage(): [Lang, string] {
-		const langs = Object.keys(LANGUAGES) as (keyof typeof LANGUAGES)[];
-		const weights = langs.map((_, i) => calcWeight(i));
-		const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
-
-		let random = Math.random() * totalWeight;
-		let index = 0;
-		for (; index < langs.length; index++) {
-			if (random < weights[index]) break;
-			random -= weights[index];
+	function pickLang(exclude: Set<Lang>): [Lang, string] {
+		const all = Object.keys(LANGUAGES) as Lang[];
+		const langs = all.filter((l) => !exclude.has(l));
+		const pool = langs.length > 0 ? langs : all;
+		const weights = pool.map((_, i) => calcWeight(i));
+		const total = weights.reduce((a, b) => a + b, 0);
+		let r = Math.random() * total;
+		let i = 0;
+		for (; i < pool.length; i++) {
+			if (r < weights[i]) break;
+			r -= weights[i];
 		}
-
-		const lang = langs[index];
-		const text = LANGUAGES[lang];
-		return [lang, text];
-	}
-
-	function sampleRandomLanguage(amount: number): [Lang, string][] {
-		const langs = Object.keys(LANGUAGES) as (keyof typeof LANGUAGES)[];
-		const weights = langs.map((_, i) => calcWeight(i)); // Higher weight for lower indices
-		const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
-
-		const sample = new Set<keyof typeof LANGUAGES>();
-		while (sample.size < amount) {
-			let random = Math.random() * totalWeight;
-			let index = 0;
-			for (; index < langs.length; index++) {
-				if (random < weights[index]) break;
-				random -= weights[index];
-			}
-			sample.add(langs[index]);
-		}
-
-		return [...sample].map((lang) => [lang, LANGUAGES[lang]]);
+		const lang = pool[i] ?? pool[0];
+		return [lang, LANGUAGES[lang]];
 	}
 
 	function getWikipediaLinkJA(lang: Lang) {
 		const name = /^[^（]+/.exec(LANGUAGE_NAMES_JA[lang])?.[0];
 		return `https://ja.wikipedia.org/wiki/${encodeURIComponent(name ?? lang)}`;
 	}
+
+	let nextKey = 0;
+
+	function makeBubble(exclude: Set<Lang>): BubbleState {
+		const [lang, text] = pickLang(exclude);
+		return {
+			key: ++nextKey,
+			lang,
+			text,
+			color: randomColor(),
+			fontSize: `${Math.random() * 2 + 1}em`,
+			top: `${Math.random() * 100}%`,
+			left: `calc(${clamp(Math.random() * 100, 10, 90)}% - 2ch)`,
+			duration: `${Math.random() * 5 + 6}s`,
+			delay: `${Math.random() * 5}s`
+		};
+	}
+
+	function makeInitial(): BubbleState[] {
+		const used = new Set<Lang>();
+		const out: BubbleState[] = [];
+		for (let i = 0; i < MAX_BUBBLE_COUNT; i++) {
+			const b = makeBubble(used);
+			used.add(b.lang);
+			out.push(b);
+		}
+		return out;
+	}
+
+	let bubbles: BubbleState[] = makeInitial();
+
+	function refresh(i: number) {
+		// Defer to the next frame so we don't destroy the element mid-event.
+		requestAnimationFrame(() => {
+			const used = new Set(bubbles.map((b) => b.lang));
+			used.delete(bubbles[i].lang);
+			const next = makeBubble(used);
+			// Reset the delay so refreshed bubbles start immediately.
+			next.delay = '0s';
+			bubbles[i] = next;
+		});
+	}
 </script>
 
-<div class="bubbles" bind:this={container}>
-	{#each sampleRandomLanguage(MAX_BUBBLE_COUNT) as [lang, text], i}
+<div class="bubbles">
+	{#each bubbles as bubble, i (bubble.key)}
 		<a
-			{lang}
-			title={LANGUAGE_NAMES_JA[lang]}
-			bind:this={bubbles[i]}
-			href={getWikipediaLinkJA(lang)}
+			lang={bubble.lang}
+			title={LANGUAGE_NAMES_JA[bubble.lang]}
+			href={getWikipediaLinkJA(bubble.lang)}
+			target="_blank"
+			rel="noopener"
+			style:color={bubble.color}
+			style:font-size={bubble.fontSize}
+			style:top={bubble.top}
+			style:left={bubble.left}
+			style:animation-name="bubbles"
+			style:animation-duration={bubble.duration}
+			style:animation-delay={bubble.delay}
+			style:animation-timing-function="ease-in-out"
+			on:animationend={() => refresh(i)}
 		>
-			{text}
+			{bubble.text}
 		</a>
 	{/each}
 </div>
@@ -141,21 +132,17 @@
 	.bubbles {
 		position: relative;
 		z-index: 1;
-		/* top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0; */
 	}
 
-	.bubbles :global(a) {
+	.bubbles a {
 		position: absolute;
 		opacity: 0;
 		white-space: nowrap;
-
 		text-decoration: none;
+		font-family: 'Noto Sans Display', sans-serif;
 	}
 
-	.bubbles :global(a:hover) {
+	.bubbles a:hover {
 		animation-play-state: paused;
 		text-decoration: underline;
 		z-index: 2;
@@ -164,17 +151,12 @@
 		text-shadow: 0 0 0.5em color-mix(in srgb, currentColor 20%, transparent);
 	}
 
-	.bubbles :global(a) {
-		font-family: 'Noto Sans Display', sans-serif;
-	}
-
-	/* Mongolian */
-	.bubbles :global(a[lang$='-Mong']) {
+	.bubbles a[lang$='-Mong'] {
 		writing-mode: vertical-lr;
 		font-family: 'Noto Sans Mongolian', sans-serif;
 	}
 
-	.bubbles :global(a[lang$='-Tibt']) {
+	.bubbles a[lang$='-Tibt'] {
 		font-family: 'Uchen', serif;
 	}
 
