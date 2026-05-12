@@ -4,7 +4,7 @@
 
 <footer>
 	<p>
-		<RiCopyrightLine /> 2022-2023 阪大言語サークルGGC
+		<RiCopyrightLine /> 2022-2026 阪大言語サークルGGC
 	</p>
 </footer>
 
