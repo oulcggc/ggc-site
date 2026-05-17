@@ -31,7 +31,8 @@
 			numeric: 'auto'
 		}).format(
 			Math.round(
-				(new Date(article._sys.updatedAt).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+				(new Date(article._sys.raw.firstPublishedAt).getTime() - new Date().getTime()) /
+					(1000 * 60 * 60 * 24)
 			),
 			'day'
 		)}

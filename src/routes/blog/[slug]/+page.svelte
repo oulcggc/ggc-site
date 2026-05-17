@@ -41,7 +41,7 @@
 				dateStyle: 'long',
 				timeStyle: 'short',
 				timeZone: 'Asia/Tokyo'
-			}).format(new Date(article._sys.updatedAt))}</span
+			}).format(new Date(article._sys.raw.firstPublishedAt))}</span
 		>
 		<!-- <span>{data.publishedAt}</span> -->
 	</div>
