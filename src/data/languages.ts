@@ -361,7 +361,20 @@ export const LANGUAGE_NAMES_JA = {
 	bho: 'ボージュプリー語',
 	new: 'ネパール・バサ語',
 	brx: 'ボド語',
-	niu: 'ニウエ語'
+	niu: 'ニウエ語',
+	bs: 'ボスニア語',
+	hr: 'クロアチア語',
+	sr: 'セルビア語',
+	ile: 'インテルリングエ',
+	tzm: '中央アトラス・タマジト語',
+	arc: 'アラム語',
+	syc: '古典シリア語',
+	ach: 'アチョリ語',
+	lou: 'ルイジアナ・クレオール語',
+	ilo: 'イロカノ語',
+	bem: 'ベンバ語',
+	ban: 'バリ語',
+	ff: 'フラ語'
 } as const;
 export type Lang = keyof typeof LANGUAGE_NAMES_JA;
 
@@ -728,5 +741,18 @@ export const LANGUAGES: Record<Lang, string> = {
 	bho: 'भाषा',
 	new: 'भाय्',
 	brx: 'राव',
-	niu: 'vagahau'
+	niu: 'vagahau',
+	bs: 'jezik',
+	hr: 'jezik',
+	sr: 'језик',
+	ile: 'lingue',
+	tzm: 'ⵜⵓⵜⵍⴰⵢⵜ',
+	arc: 'ܠܫܢܐ',
+	syc: 'ܠܫܢܐ',
+	ach: 'leb',
+	lou: 'langaj',
+	ilo: 'pagsasao',
+	bem: 'ululimi',
+	ban: 'basa',
+	ff: 'ɗemngal'
 } as const;
