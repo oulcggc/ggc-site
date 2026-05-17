@@ -702,7 +702,7 @@ export const LANGUAGES: Record<Lang, string> = {
 	sah: 'тыл',
 	esu: 'qaneryaraq',
 	diq: 'zon',
-	yue: '廣東話',
+	yue: '語言',
 	nan: 'gí-giân',
 	br: 'yezh',
 	gsw: 'Sproch',
