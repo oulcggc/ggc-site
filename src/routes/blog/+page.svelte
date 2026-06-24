@@ -1,12 +1,9 @@
 <script lang="ts">
 	import BlogResult from '$lib/ui/blog/BlogResult.svelte';
-	import RiCopyrightLine from '~icons/ri/copyright-line';
 
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	console.log('data', data);
 </script>
 
 <main>

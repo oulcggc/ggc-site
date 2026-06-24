@@ -40,7 +40,7 @@
 </div>
 <p class="notice">※いずれも変更の可能性あり</p>
 
-<div class="sns" />
+<div class="sns"></div>
 
 <style>
 	.cards {

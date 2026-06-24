@@ -14,7 +14,7 @@
 
 <div class="hamburger-container" data-open={open}>
 	<div class="hamburger">
-		<Hamburger bind:open --padding={0} on:click />
+		<Hamburger bind:open --padding="0" />
 	</div>
 	<div class="menu" data-open={open}>
 		{#if open}
@@ -83,7 +83,9 @@
 		flex-direction: column;
 		gap: 0.5em;
 
-		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+		transition:
+			background-color 0.5s ease-in-out,
+			backdrop-filter 0.5s ease-in-out;
 		z-index: 2;
 	}
 
@@ -108,7 +110,9 @@
 		background: rgba(255, 255, 255, 0.5);
 		backdrop-filter: blur(2px);
 
-		transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+		transition:
+			background-color 0.5s ease-in-out,
+			backdrop-filter 0.5s ease-in-out;
 	}
 
 	.hamburger :global(button.hamburger) {
@@ -127,7 +131,9 @@
 	.menu {
 		width: auto;
 		opacity: 0;
-		transition: opacity 1s ease-in-out 0.5s, height 1s ease-in-out;
+		transition:
+			opacity 1s ease-in-out 0.5s,
+			height 1s ease-in-out;
 
 		font-size: 1.5em;
 

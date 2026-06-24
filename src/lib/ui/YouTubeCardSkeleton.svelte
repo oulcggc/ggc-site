@@ -1,7 +1,7 @@
 <div class="skeleton" aria-hidden="true">
-	<div class="thumb" />
-	<div class="line" />
-	<div class="line short" />
+	<div class="thumb"></div>
+	<div class="line"></div>
+	<div class="line short"></div>
 </div>
 
 <style>

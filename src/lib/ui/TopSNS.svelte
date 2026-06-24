@@ -49,7 +49,9 @@
 
 	a {
 		color: var(--color-accent);
-		transition: color 0.2s ease-in-out, filter 0.2s ease-in-out;
+		transition:
+			color 0.2s ease-in-out,
+			filter 0.2s ease-in-out;
 		display: flex;
 		justify-content: center;
 		align-items: center;

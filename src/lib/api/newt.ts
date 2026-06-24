@@ -327,7 +327,7 @@ class NewtClient {
 		if (!appUid) throw new Error('appUid parameter is required.');
 		if (!modelUid) throw new Error('modelUid parameter is required.');
 
-		let url = new URL(`/v1/${appUid}/${modelUid}`, this.baseUrl);
+		const url = new URL(`/v1/${appUid}/${modelUid}`, this.baseUrl);
 		if (query && Object.keys(query).length) {
 			const { encoded } = parseQuery(query);
 			url.search = encoded;
@@ -345,7 +345,7 @@ class NewtClient {
 		if (!modelUid) throw new Error('modelUid parameter is required.');
 		if (!contentId) throw new Error('contentId parameter is required.');
 
-		let url = new URL(`/v1/${appUid}/${modelUid}/${contentId}`, this.baseUrl);
+		const url = new URL(`/v1/${appUid}/${modelUid}/${contentId}`, this.baseUrl);
 		if (query && Object.keys(query).length) {
 			const { encoded } = parseQuery(query);
 			url.search = encoded;
@@ -375,7 +375,7 @@ class NewtClient {
 
 	public async getApp({ appUid }: GetAppParams): Promise<AppMeta> {
 		if (!appUid) throw new Error('appUid parameter is required.');
-		let url = new URL(`/v1/space/apps/${appUid}`, this.baseUrl);
+		const url = new URL(`/v1/space/apps/${appUid}`, this.baseUrl);
 
 		return await fetchWithRetry(
 			url.toString(),

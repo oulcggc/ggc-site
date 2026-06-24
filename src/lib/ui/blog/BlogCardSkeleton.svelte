@@ -3,15 +3,15 @@
 </script>
 
 <div class="card skeleton">
-	<div class="thumbnail placeholder" />
+	<div class="thumbnail placeholder"></div>
 	<!-- svelte-ignore a11y-missing-content -->
-	<h3 class="title placeholder" />
+	<h3 class="title placeholder"></h3>
 	<div class="author">
-		<div class="avatar placeholder" />
-		<div class="name placeholder" />
+		<div class="avatar placeholder"></div>
+		<div class="name placeholder"></div>
 	</div>
-	<div class="date placeholder" />
-	<div class="favorite placeholder" />
+	<div class="date placeholder"></div>
+	<div class="favorite placeholder"></div>
 </div>
 
 <style>
