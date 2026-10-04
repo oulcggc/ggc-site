@@ -1,88 +1,71 @@
-<script>
-	import CalenderEvent from '#lib/ui/CalenderEvent.svelte';
+<script lang="ts">
+	import ScheduleSlot from '#lib/ui/ScheduleSlot.svelte';
 	import RiCalendarTodoFill from '~icons/ri/calendar-todo-fill';
+
+	const TOYONAKA = {
+		campus: '豊中',
+		place: 'サイエンススタジオB',
+		href: '#tynkb',
+		time: '18:30–19:50',
+		color: 'b'
+	} as const;
+
+	const MINOH = {
+		campus: '箕面',
+		place: '外520講義室',
+		href: '#minoh',
+		time: '18:30–20:10',
+		color: 'r'
+	} as const;
+
+	const WEEK = [
+		{ day: '月', slot: TOYONAKA },
+		{ day: '火', slot: TOYONAKA },
+		{ day: '水', slot: TOYONAKA },
+		{ day: '木', slot: MINOH },
+		{ day: '金', slot: MINOH }
+	];
+
+	const ACTIVITY_TYPES = [
+		{ name: '共通語学', detail: 'みんなで同じ言語を学びます。' },
+		{ name: '個別発表', detail: '部員が語学や言語学について教えあいます。' },
+		{ name: '参加型企画', detail: 'ことばに関するゲームなど、参加型の企画をみんなで楽しみます。' }
+	];
 </script>
 
-<h2>活動内容（春学期）</h2>
+<h2>活動内容</h2>
+
+<p class="lead">
+	平日の夜、豊中・箕面の両キャンパスで活動しています。出入り自由で、途中からの参加も歓迎です。
+</p>
 
 <table>
 	<thead>
 		<tr>
-			<th></th>
-			<th>月</th>
-			<th>火</th>
-			<th>水</th>
-			<th>木</th>
-			<th>金</th>
+			{#each WEEK as { day } (day)}
+				<th>{day}</th>
+			{/each}
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<th>昼</th>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td> </td>
-		</tr>
-		<tr>
-			<th>夜</th>
-			<td>
-				<CalenderEvent
-					name="初級アイスランド語"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:30–19:50"
-					color="b"
-					detail="みんなで同じ言語を学びます。"
-				/>
-			</td>
-			<td>
-				<CalenderEvent
-					name="初級ジョージア語"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:30–19:50"
-					color="b"
-					detail="みんなで同じ言語を学びます。"
-				/>
-			</td>
-			<td>
-				<CalenderEvent
-					name="ナウル語"
-					place="520@箕面"
-					href="#minoh"
-					time="18:30–20:10"
-					color="r"
-					detail="みんなで同じ言語を学びます。"
-				/>
-			</td>
-			<td>
-				<CalenderEvent
-					name="綴りと発音が一致しているという幻想"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:30–19:50"
-					color="b"
-					detail="部員が語学や言語学にまつわることについて教えあいます。"
-				/>
-			</td>
-			<td>
-				<CalenderEvent
-					name="ワードル（ゲーム）"
-					place="SSB@豊中"
-					href="#tynkb"
-					time="18:30–19:50"
-					color="b"
-					detail="ことばに関するゲームをみんなで楽しみます。"
-				/>
-			</td>
+			{#each WEEK as { day, slot } (day)}
+				<td><ScheduleSlot {...slot} /></td>
+			{/each}
 		</tr>
 	</tbody>
 </table>
-<p class="notice">※いずれも変更の可能性あり</p>
+
+<h3>活動の種類</h3>
+<dl>
+	{#each ACTIVITY_TYPES as { name, detail } (name)}
+		<dt>{name}</dt>
+		<dd>{detail}</dd>
+	{/each}
+</dl>
+
 <p class="notice">
-	※当ホームページの情報は参考用であり、頻繁には更新されません。実際にご参加の際は、Instagram・LINEオープンチャット等のSNSもあわせてご確認のうえ、最新情報をご確認ください。
+	※各回の内容は週ごとに変わります。実際にご参加の際は、Instagram・LINEオープンチャット等のSNSで最新情報をご確認ください。
 </p>
 
 <a
@@ -161,5 +144,30 @@
 	.notice {
 		font-size: 1.2em;
 		text-align: center;
+	}
+
+	h3 {
+		margin-top: 1.5em;
+	}
+
+	.lead {
+		text-align: center;
+	}
+
+	dl {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5em 1em;
+		margin: 0 auto 1em;
+		max-width: 36em;
+	}
+
+	dt {
+		font-weight: bold;
+		color: var(--color-theme);
+	}
+
+	dd {
+		margin: 0;
 	}
 </style>
