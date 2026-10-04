@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 bun.lockb
 bun.lock
 package-lock.json
+/.wrangler
