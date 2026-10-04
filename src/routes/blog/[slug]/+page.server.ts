@@ -3,17 +3,18 @@ import { error } from '@sveltejs/kit';
 import { client, type Post } from '#lib/api/newt.ts';
 
 export const load: PageServerLoad = async ({ params: { slug } }) => {
+	let article: Post | null;
 	try {
-		const article = await client.getFirstContent<Post>({
+		article = await client.getFirstContent<Post>({
 			appUid: 'blog',
 			modelUid: 'article',
 			query: { slug }
 		});
-
-		if (!article) error(404, 'Article not found');
-		return { article };
 	} catch (e) {
 		console.error(e);
 		error(500, 'Unable to fetch article');
 	}
+
+	if (!article) error(404, 'Article not found');
+	return { article };
 };
