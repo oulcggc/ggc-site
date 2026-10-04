@@ -92,7 +92,9 @@
 	.badge-bg {
 		fill: #212121;
 		opacity: 0.85;
-		transition: fill 0.2s ease, opacity 0.2s ease;
+		transition:
+			fill 0.2s ease,
+			opacity 0.2s ease;
 	}
 
 	.play:hover .badge,
