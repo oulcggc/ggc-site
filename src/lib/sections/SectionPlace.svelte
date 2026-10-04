@@ -1,7 +1,7 @@
 <script lang="ts">
 	// TODO: LINK TO ACCESS MAP
-	import PlaceCard from '$lib/ui/PlaceCard.svelte';
-	import Minoh520 from '$assets/classroom_in_minoh.jpg';
+	import PlaceCard from '#lib/ui/PlaceCard.svelte';
+	import Minoh520 from '#assets/classroom_in_minoh.jpg';
 </script>
 
 <h2>活動拠点</h2>

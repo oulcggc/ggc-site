@@ -1,9 +1,9 @@
-import SectionContent from '$lib/sections/SectionContent.svelte';
-import SectionPlace from '$lib/sections/SectionPlace.svelte';
-import SectionContact from '$lib/sections/SectionContact.svelte';
-import SectionHome from '$lib/sections/SectionHome.svelte';
-import SectionAbout from '$lib/sections/SectionAbout.svelte';
-import SectionYouTube from '$lib/sections/SectionYouTube.svelte';
+import SectionContent from '#lib/sections/SectionContent.svelte';
+import SectionPlace from '#lib/sections/SectionPlace.svelte';
+import SectionContact from '#lib/sections/SectionContact.svelte';
+import SectionHome from '#lib/sections/SectionHome.svelte';
+import SectionAbout from '#lib/sections/SectionAbout.svelte';
+import SectionYouTube from '#lib/sections/SectionYouTube.svelte';
 import SectionBlog from './SectionBlog.svelte';
 
 import type { Component } from 'svelte';

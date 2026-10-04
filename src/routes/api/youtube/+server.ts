@@ -1,5 +1,5 @@
 import { error, json } from '@sveltejs/kit';
-import { getLatestVideos } from '$lib/api/youtube';
+import { getLatestVideos } from '#lib/api/youtube.ts';
 
 export const GET = async ({ setHeaders }): Promise<Response> => {
 	try {

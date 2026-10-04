@@ -1,5 +1,5 @@
 import { error, json } from '@sveltejs/kit';
-import { client, type Post } from '$lib/api/newt';
+import { client, type Post } from '#lib/api/newt.ts';
 
 export const GET = async (): Promise<Response> => {
 	try {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LANGUAGES, LANGUAGE_NAMES_JA, type Lang } from '$data/languages';
+	import { LANGUAGES, LANGUAGE_NAMES_JA, type Lang } from '#data/languages.ts';
 
 	const MAX_BUBBLE_COUNT = 30;
 

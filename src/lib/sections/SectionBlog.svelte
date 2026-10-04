@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Contents, Post } from '$lib/api/newt';
-	import BlogCard from '$lib/ui/blog/BlogCard.svelte';
-	import BlogCardSkeleton from '$lib/ui/blog/BlogCardSkeleton.svelte';
+	import type { Contents, Post } from '#lib/api/newt.ts';
+	import BlogCard from '#lib/ui/blog/BlogCard.svelte';
+	import BlogCardSkeleton from '#lib/ui/blog/BlogCardSkeleton.svelte';
 	import RiArticleLine from '~icons/ri/article-line';
 
 	async function fetchArticles(): Promise<Contents<Post>> {

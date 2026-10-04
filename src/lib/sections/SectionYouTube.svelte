@@ -1,7 +1,7 @@
 <script lang="ts">
-	import LiteYouTube from '$lib/ui/LiteYouTube.svelte';
-	import YouTubeCardSkeleton from '$lib/ui/YouTubeCardSkeleton.svelte';
-	import { YOUTUBE_CHANNEL_URL, type Video } from '$data/youtube';
+	import LiteYouTube from '#lib/ui/LiteYouTube.svelte';
+	import YouTubeCardSkeleton from '#lib/ui/YouTubeCardSkeleton.svelte';
+	import { YOUTUBE_CHANNEL_URL, type Video } from '#data/youtube.ts';
 	import RiYoutubeFill from '~icons/ri/youtube-fill';
 
 	async function fetchVideos(): Promise<Video[]> {

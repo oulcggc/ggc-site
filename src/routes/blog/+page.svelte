@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BlogResult from '$lib/ui/blog/BlogResult.svelte';
+	import BlogResult from '#lib/ui/blog/BlogResult.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();

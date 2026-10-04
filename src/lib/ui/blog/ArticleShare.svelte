@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { MediaQuery } from 'svelte/reactivity';
-	import SnsIcon from '$lib/ui/SNSIcon.svelte';
-	import ContextMenu from '$lib/ui/ContextMenu.svelte';
-	import type { SNS } from '$lib/util/sns';
+	import SnsIcon from '#lib/ui/SNSIcon.svelte';
+	import ContextMenu from '#lib/ui/ContextMenu.svelte';
+	import type { SNS } from '#lib/util/sns.ts';
 	import RiShareCircleFill from '~icons/ri/share-circle-fill';
 	import RiFileCopyLine from '~icons/ri/file-copy-line';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Post } from '$lib/api/newt';
-	import Avatar from '$lib/ui/Avatar.svelte';
+	import type { Post } from '#lib/api/newt.ts';
+	import Avatar from '#lib/ui/Avatar.svelte';
 
 	import RiHeart3Line from '~icons/ri/heart-3-line';
 

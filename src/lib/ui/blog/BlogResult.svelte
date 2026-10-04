@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Post } from '$lib/api/newt';
-	import Avatar from '$lib/ui/Avatar.svelte';
-	import Tag from '$lib/ui/Tag.svelte';
+	import type { Post } from '#lib/api/newt.ts';
+	import Avatar from '#lib/ui/Avatar.svelte';
+	import Tag from '#lib/ui/Tag.svelte';
 
 	interface Props {
 		article: Post;

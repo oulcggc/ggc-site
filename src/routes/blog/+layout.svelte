@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import GGCLogo from '$assets/ggc_logo_1240x1240.jpg';
-	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
+	import GGCLogo from '#assets/ggc_logo_1240x1240.jpg';
+	import HamburgerMenu from '#lib/ui/HamburgerMenu.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
