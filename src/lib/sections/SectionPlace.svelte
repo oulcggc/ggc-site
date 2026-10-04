@@ -12,7 +12,7 @@
 		name="サイエンススタジオB"
 		campus="豊中キャンパス"
 		photo="https://picsum.photos/seed/2/300/200"
-		time="月～水曜日 18:00–19:45"
+		time="月～水曜日 18:30–19:50"
 		access="https://www.celas.osaka-u.ac.jp/facilities/"
 		facility="https://www.celas.osaka-u.ac.jp/facilities/commons/science/"
 		building="サイエンス・コモンズ 1階"
@@ -22,7 +22,7 @@
 		name="外520講義室"
 		campus="箕面キャンパス"
 		photo={Minoh520}
-		time="木・金曜日 18:30–20:15"
+		time="木・金曜日 18:30–20:10"
 		access="https://www1.lang.osaka-u.ac.jp/access.html"
 		facility="https://www.osaka-u.ac.jp/ja/guide/campus/projects/minoh/"
 		building="外国学講義棟 5階"
@@ -38,7 +38,6 @@
 		building="サイバーメディアセンター 4階"
 	/>
 </div>
-<p class="notice">※10月から月・火曜日は豊中、水～金曜日は箕面となる予定（未確定）</p>
 <p class="notice">※いずれも変更の可能性あり</p>
 
 <div class="sns"></div>
