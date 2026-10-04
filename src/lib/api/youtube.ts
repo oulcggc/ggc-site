@@ -1,76 +1,37 @@
-import { YOUTUBE_CHANNEL_URL, type Video } from '#data/youtube.ts';
+import { PRIVATE_YOUTUBE_API_KEY } from '$app/env/private';
+import { YOUTUBE_CHANNEL_ID, type Video } from '#data/youtube.ts';
 
-let cachedChannelId: string | null = null;
+// Every channel's uploads live in a playlist whose ID swaps the channel's "UC" prefix for "UU".
+const UPLOADS_PLAYLIST_ID = `UU${YOUTUBE_CHANNEL_ID.slice(2)}`;
 
-const CHANNEL_ID_PATTERNS = [
-	/"channelId":"(UC[A-Za-z0-9_-]{22})"/,
-	/"externalId":"(UC[A-Za-z0-9_-]{22})"/,
-	/channel\/(UC[A-Za-z0-9_-]{22})/
-];
-
-async function resolveChannelId(): Promise<string> {
-	if (cachedChannelId) return cachedChannelId;
-
-	const res = await fetch(YOUTUBE_CHANNEL_URL, {
-		headers: {
-			'user-agent': 'Mozilla/5.0 (compatible; ggc-site/1.0; +https://ggc-osaka.pages.dev/)',
-			'accept-language': 'ja,en;q=0.8'
-		}
-	});
-	if (!res.ok) throw new Error(`Failed to load channel page (${res.status})`);
-
-	const html = await res.text();
-	for (const pattern of CHANNEL_ID_PATTERNS) {
-		const match = html.match(pattern);
-		if (match) {
-			cachedChannelId = match[1];
-			return cachedChannelId;
-		}
-	}
-	throw new Error('Could not extract channel ID from channel page');
-}
-
-function unescapeXml(s: string): string {
-	return s
-		.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-		.replace(/&lt;/g, '<')
-		.replace(/&gt;/g, '>')
-		.replace(/&quot;/g, '"')
-		.replace(/&apos;/g, "'")
-		.replace(/&#39;/g, "'")
-		.replace(/&amp;/g, '&');
-}
+type PlaylistItem = {
+	snippet: { title: string };
+	contentDetails: { videoId: string; videoPublishedAt?: string };
+};
 
 export async function getLatestVideos(limit = 6): Promise<Video[]> {
-	const channelId = await resolveChannelId();
-	const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+	if (!PRIVATE_YOUTUBE_API_KEY) throw new Error('PRIVATE_YOUTUBE_API_KEY is not set');
 
-	const res = await fetch(rssUrl);
-	if (!res.ok) throw new Error(`Failed to load channel feed (${res.status})`);
-	const xml = await res.text();
+	const url = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
+	url.search = new URLSearchParams({
+		part: 'snippet,contentDetails',
+		playlistId: UPLOADS_PLAYLIST_ID,
+		maxResults: '50',
+		key: PRIVATE_YOUTUBE_API_KEY
+	}).toString();
 
-	const videos: Video[] = [];
-	const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
-	let m: RegExpExecArray | null;
-	while ((m = entryRegex.exec(xml)) !== null) {
-		const entry = m[1];
-		const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
-		const title = entry.match(/<title>([\s\S]*?)<\/title>/)?.[1];
-		const publishedAt = entry.match(/<published>([^<]+)<\/published>/)?.[1];
-		const channelTitle = entry.match(
-			/<author>[\s\S]*?<name>([^<]+)<\/name>[\s\S]*?<\/author>/
-		)?.[1];
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`YouTube Data API responded ${res.status}: ${await res.text()}`);
+	const { items } = (await res.json()) as { items: PlaylistItem[] };
 
-		if (id && title && publishedAt) {
-			videos.push({
-				id,
-				title: unescapeXml(title).trim(),
-				publishedAt,
-				channelTitle: channelTitle ? unescapeXml(channelTitle).trim() : ''
-			});
-			if (videos.length >= limit) break;
-		}
-	}
-
-	return videos;
+	// Private and deleted uploads stay in the playlist but have no publish date.
+	return items
+		.filter((item) => item.contentDetails.videoPublishedAt)
+		.map((item) => ({
+			id: item.contentDetails.videoId,
+			title: item.snippet.title,
+			publishedAt: item.contentDetails.videoPublishedAt!
+		}))
+		.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+		.slice(0, limit);
 }

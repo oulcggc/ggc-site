@@ -45,6 +45,8 @@ The blog data flow is:
 
 Without the env vars set, blog routes and the API endpoint will throw on load. All Newt fetches go through `fetchWithRetry` in `src/lib/util/fetch.ts` (3 retries, only retries 429/500).
 
+**YouTube → Data API v3.** `src/lib/api/youtube.ts` reads the channel's uploads playlist (`UU` + the channel ID in `src/data/youtube.ts`) with `PRIVATE_YOUTUBE_API_KEY`, a runtime (non-static) optional env var. Without it the site works and only `/api/youtube` returns 500. `/api/youtube` sets `s-maxage=3600`, so the API sees about one request per hour per edge.
+
 **Static data lives in `src/data/`:**
 
 - `sns.json` — SNS account list, typed via the `SNSAccount`/`SNS` declarations in `src/app.d.ts` and `src/lib/util/sns.ts`
