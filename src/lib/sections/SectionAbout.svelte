@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tag from '$lib/ui/Tag.svelte';
+	import Tag from '#lib/ui/Tag.svelte';
 
 	const KEYWORDS = ['大阪大学', '言語サークル', '語学', '言語学', '外語', '言語交換'];
 </script>

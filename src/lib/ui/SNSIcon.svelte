@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SNS } from '$lib/util/sns';
+	import type { SNS } from '#lib/util/sns.ts';
 
 	import RiTwitterXFill from '~icons/ri/twitter-x-fill';
 	import RiInstagramLine from '~icons/ri/instagram-line';

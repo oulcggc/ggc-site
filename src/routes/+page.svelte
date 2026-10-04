@@ -1,13 +1,13 @@
 <script lang="ts">
-	import NavMenu from '$lib/ui/NavMenu.svelte';
-	import SideSNS from '$lib/ui/SideSNS.svelte';
+	import NavMenu from '#lib/ui/NavMenu.svelte';
+	import SideSNS from '#lib/ui/SideSNS.svelte';
 
-	import { SECTIONS } from '$lib/sections';
+	import { SECTIONS } from '#lib/sections/index.ts';
 
-	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
-	import Section from '$lib/sections/Section.svelte';
-	import TopSNS from '$lib/ui/TopSNS.svelte';
-	import BackToTop from '$lib/ui/BackToTop.svelte';
+	import HamburgerMenu from '#lib/ui/HamburgerMenu.svelte';
+	import Section from '#lib/sections/Section.svelte';
+	import TopSNS from '#lib/ui/TopSNS.svelte';
+	import BackToTop from '#lib/ui/BackToTop.svelte';
 
 	const inviews: boolean[] = $state(SECTIONS.map(() => false));
 

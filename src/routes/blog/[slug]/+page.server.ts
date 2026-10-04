@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { client, type Post } from '$lib/api/newt';
+import { client, type Post } from '#lib/api/newt.ts';
 
 export const load: PageServerLoad = async ({ params: { slug } }) => {
 	try {

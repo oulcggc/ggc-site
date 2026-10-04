@@ -1,10 +1,10 @@
 <script lang="ts">
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
-	import QRCode from '$lib/ui/QRCode.svelte';
+	import SNSIcon from '#lib/ui/SNSIcon.svelte';
+	import QRCode from '#lib/ui/QRCode.svelte';
 
-	import SNS_ACCOUNTS from '$data/sns.json';
-	import OPENCHAT_LINK from '$data/openchat-link.txt?raw';
-	import OPENCHAT_LOGO from '$assets/line_openchat_400x400.png';
+	import SNS_ACCOUNTS from '#data/sns.json';
+	import OPENCHAT_LINK from '#data/openchat-link.txt?raw';
+	import OPENCHAT_LOGO from '#assets/line_openchat_400x400.png';
 </script>
 
 <h2>お問い合わせ</h2>

@@ -3,7 +3,7 @@
 
 /// <reference types="unplugin-icons/types/svelte" />
 
-declare module '$data/sns.json' {
+declare module '#data/sns.json' {
 	const value: SNSAccount[];
 	export default value;
 }

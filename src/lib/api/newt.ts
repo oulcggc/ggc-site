@@ -22,8 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import { PRIVATE_NEWT_CDN_TOKEN, PRIVATE_NEWT_SPACE_UID } from '$env/static/private';
-import { fetchWithRetry } from '$lib/util/fetch';
+import { PRIVATE_NEWT_CDN_TOKEN, PRIVATE_NEWT_SPACE_UID } from '$app/env/private';
+import { fetchWithRetry } from '#lib/util/fetch.ts';
 import qs from 'qs';
 
 const parseAndQuery = (andQuery: FilterQuery[]) => {
