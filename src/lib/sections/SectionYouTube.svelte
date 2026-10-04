@@ -22,14 +22,14 @@
 
 <div class="grid">
 	{#await fetchVideos()}
-		{#each Array(3) as _}
+		{#each [0, 1, 2] as i (i)}
 			<YouTubeCardSkeleton />
 		{/each}
 	{:then videos}
 		{#if videos.length === 0}
 			<p class="empty">まだ動画がありません。</p>
 		{:else}
-			{#each videos as video}
+			{#each videos as video (video.id)}
 				<article class="card">
 					<LiteYouTube videoId={video.id} title={video.title} />
 					<h4>

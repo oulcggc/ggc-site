@@ -5,7 +5,7 @@
 
 {#if inviews}
 	<ul>
-		{#each sections as { id, name }, i}
+		{#each sections as { id, name }, i (id)}
 			{@const inview = inviews[i] ?? false}
 			<li class:inview>
 				<a href={`#${id}`} class="text">{name}</a>

@@ -18,7 +18,7 @@
 	</a>
 
 	<nav class="normal">
-		{#each LINKS as link}
+		{#each LINKS as link (link.href)}
 			<a class="text" href={link.href}>{link.name}</a>
 		{/each}
 	</nav>

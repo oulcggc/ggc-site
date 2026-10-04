@@ -3,6 +3,7 @@
 </script>
 
 <div class="article-body">
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- article HTML comes from the Newt CMS -->
 	{@html content}
 </div>
 

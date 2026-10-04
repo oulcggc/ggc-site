@@ -23,7 +23,7 @@
 		>
 	</div>
 	<div class="tags">
-		{#each article.tags as { name, slug }}
+		{#each article.tags as { name, slug } (slug)}
 			<Tag {name} {slug} />
 		{/each}
 	</div>
