@@ -6,15 +6,19 @@
 	import { Hamburger } from 'svelte-hamburgers';
 	import SNSIcon from '$lib/ui/SNSIcon.svelte';
 
-	export let links: { href: string; name: string }[] = [];
-	export let open: boolean = false;
+	interface Props {
+		links?: { href: string; name: string }[];
+		open?: boolean;
+	}
+
+	let { links = [], open = $bindable(false) }: Props = $props();
 </script>
 
-<svelte:window on:resize={() => (open = false)} on:scroll={() => (open = false)} />
+<svelte:window onresize={() => (open = false)} onscroll={() => (open = false)} />
 
 <div class="hamburger-container" data-open={open}>
 	<div class="hamburger">
-		<Hamburger bind:open --padding={0} on:click />
+		<Hamburger bind:open --padding={0} />
 	</div>
 	<div class="menu" data-open={open}>
 		{#if open}
@@ -37,7 +41,7 @@
 						}}
 					>
 						<!-- transition:fly={{ y: -15, delay: 50 * i }} -->
-						<a {href} on:click={() => (open = false)}>{name}</a>
+						<a {href} onclick={() => (open = false)}>{name}</a>
 					</p>
 				{/each}
 			</div>

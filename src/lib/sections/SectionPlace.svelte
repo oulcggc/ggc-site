@@ -41,7 +41,7 @@
 <p class="notice">※10月から月・火曜日は豊中、水～金曜日は箕面となる予定（未確定）</p>
 <p class="notice">※いずれも変更の可能性あり</p>
 
-<div class="sns" />
+<div class="sns"></div>
 
 <style>
 	.cards {

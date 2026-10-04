@@ -1,30 +1,28 @@
 <script lang="ts">
+	import { MediaQuery } from 'svelte/reactivity';
 	import SnsIcon from '$lib/ui/SNSIcon.svelte';
-	import RiShareCircleFill from '~icons/ri/share-circle-fill';
+	import ContextMenu from '$lib/ui/ContextMenu.svelte';
 	import type { SNS } from '$lib/util/sns';
-	import { onMount } from 'svelte';
-	export let links: Map<SNS, string>;
-
-	// Partial<Record<SNS, string>>;
+	import RiShareCircleFill from '~icons/ri/share-circle-fill';
 	import RiFileCopyLine from '~icons/ri/file-copy-line';
-	import ContextMenu from '../ContextMenu.svelte';
-	let smallScreen: boolean = false;
 
-	onMount(() => {
-		const query = window.matchMedia('(max-width: 768px)');
-		smallScreen = query.matches;
-		query.addEventListener('change', (e) => {
-			smallScreen = e.matches;
-		});
-	});
+	interface Props {
+		links: Map<SNS, string>;
+	}
+
+	let { links }: Props = $props();
+
+	const smallScreen = new MediaQuery('(max-width: 768px)', false);
 </script>
 
 <div class="share">
-	{#if smallScreen}
+	{#if smallScreen.current}
 		<ContextMenu placement="left">
-			<button class="icon" slot="trigger">
-				<RiShareCircleFill height="1em" />
-			</button>
+			{#snippet trigger(attach)}
+				<button class="icon" title="シェア" {@attach attach}>
+					<RiShareCircleFill height="1em" />
+				</button>
+			{/snippet}
 			{#each links.entries() as [type, url] (type)}
 				<a href={url} title={`${type}でシェア`} target="_blank">
 					<SnsIcon {type} />
@@ -33,7 +31,7 @@
 			<button
 				class="icon"
 				title="URLをコピー"
-				on:click={() => {
+				onclick={() => {
 					navigator.clipboard.writeText(location.href);
 				}}
 			>
@@ -49,7 +47,7 @@
 		<button
 			class="icon"
 			title="URLをコピー"
-			on:click={() => {
+			onclick={() => {
 				navigator.clipboard.writeText(location.href);
 			}}
 		>

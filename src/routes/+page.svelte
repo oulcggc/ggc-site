@@ -6,16 +6,12 @@
 
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
 	import Section from '$lib/sections/Section.svelte';
-	import Sections from '$lib/sections/Sections.svelte';
 	import TopSNS from '$lib/ui/TopSNS.svelte';
-
-	import type { Writable } from 'svelte/store';
-
 	import BackToTop from '$lib/ui/BackToTop.svelte';
 
-	let inviews: Writable<boolean[]>;
+	const inviews: boolean[] = $state(SECTIONS.map(() => false));
 
-	let hamburgerMenuOpen: boolean = false;
+	let hamburgerMenuOpen = $state(false);
 </script>
 
 <svelte:head>
@@ -62,19 +58,17 @@
 </nav>
 
 <nav class="float">
-	<NavMenu sections={SECTIONS} inviews={$inviews} />
+	<NavMenu sections={SECTIONS} {inviews} />
 </nav>
 
 <SideSNS />
 
 <main>
-	<Sections bind:inviews>
-		{#each SECTIONS as { id, component } (id)}
-			<Section {id}>
-				<svelte:component this={component} />
-			</Section>
-		{/each}
-	</Sections>
+	{#each SECTIONS as { id, component: Component }, i (id)}
+		<Section {id} bind:inView={inviews[i]}>
+			<Component />
+		</Section>
+	{/each}
 </main>
 
 <BackToTop />

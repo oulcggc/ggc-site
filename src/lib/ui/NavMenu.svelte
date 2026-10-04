@@ -1,18 +1,19 @@
 <script lang="ts">
-	export let sections: { id: string; name: string }[] = [];
-	export let inviews: boolean[];
+	interface Props {
+		sections: { id: string; name: string }[];
+		inviews: boolean[];
+	}
+
+	let { sections, inviews }: Props = $props();
 </script>
 
-{#if inviews}
-	<ul>
-		{#each sections as { id, name }, i (id)}
-			{@const inview = inviews[i] ?? false}
-			<li class:inview>
-				<a href={`#${id}`} class="text">{name}</a>
-			</li>
-		{/each}
-	</ul>
-{/if}
+<ul>
+	{#each sections as { id, name }, i (id)}
+		<li class:inview={inviews[i]}>
+			<a href={`#${id}`} class="text">{name}</a>
+		</li>
+	{/each}
+</ul>
 
 <style>
 	ul {

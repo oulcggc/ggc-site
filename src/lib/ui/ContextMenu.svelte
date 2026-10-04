@@ -1,58 +1,46 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import tippy from 'tippy.js';
+	import type { Snippet } from 'svelte';
+	import type { Attachment } from 'svelte/attachments';
+	import tippy, { type Placement } from 'tippy.js';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/light.css';
 
-	export let placement: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
-	export let trigger = 'mouseenter focus click';
-	export let disabled = false;
-	export let style: string | undefined = undefined;
+	interface Props {
+		placement?: Placement;
+		style?: string;
+		trigger: Snippet<[Attachment<HTMLElement>]>;
+		children: Snippet;
+	}
 
-	let triggerButton: HTMLButtonElement;
-	let content: HTMLDivElement;
-	onMount(() => {
-		tippy(triggerButton, {
+	let { placement = 'bottom', style, trigger, children }: Props = $props();
+
+	let content: HTMLDivElement | undefined = $state();
+
+	const attach: Attachment<HTMLElement> = (node) => {
+		if (!content) return;
+		const instance = tippy(node, {
 			content,
 			placement,
 			theme: 'light',
-			trigger,
+			trigger: 'mouseenter focus click',
 			appendTo: 'parent',
 			interactive: true
 		});
-	});
+		return () => instance.destroy();
+	};
 </script>
 
-<div class="tooltip-container" role="tooltip">
-	<button bind:this={triggerButton} {disabled}>
-		<slot name="trigger" />
-	</button>
+<div class="tooltip-container">
+	{@render trigger(attach)}
 
-	<div class="content" bind:this={content} {style}>
-		<slot />
+	<div class="content" role="tooltip" bind:this={content} {style}>
+		{@render children()}
 	</div>
 </div>
 
 <style>
 	.tooltip-container {
 		display: contents;
-	}
-
-	button {
-		background: none;
-		border: none;
-		padding: 0;
-		margin: 0;
-		cursor: pointer;
-
-		display: inline-flex;
-		align-items: baseline;
-		justify-content: center;
-		flex-direction: row;
-	}
-
-	button:disabled {
-		cursor: not-allowed;
 	}
 
 	div {

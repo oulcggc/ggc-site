@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+	import type { Snippet } from 'svelte';
 	import GGCLogo from '$assets/ggc_logo_1240x1240.jpg';
-	import { page } from '$app/stores';
 	import HamburgerMenu from '$lib/ui/HamburgerMenu.svelte';
-	$: console.log($page);
+
+	let { children }: { children: Snippet } = $props();
 
 	const LINKS = [
 		{ href: '/', name: 'ホーム' },
@@ -28,7 +29,7 @@
 	</nav>
 </header>
 
-<slot />
+{@render children()}
 
 <style>
 	header {

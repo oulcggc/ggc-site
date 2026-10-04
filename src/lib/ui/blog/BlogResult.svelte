@@ -3,7 +3,11 @@
 	import Avatar from '$lib/ui/Avatar.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
 
-	export let article: Post;
+	interface Props {
+		article: Post;
+	}
+
+	let { article }: Props = $props();
 </script>
 
 <div class="card">
@@ -24,7 +28,7 @@
 	</div>
 	<div class="tags">
 		{#each article.tags as { name, slug } (slug)}
-			<Tag {name} {slug} />
+			<Tag {name} />
 		{/each}
 	</div>
 </div>

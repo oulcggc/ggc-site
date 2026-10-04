@@ -1,15 +1,19 @@
 <script lang="ts">
-	export let videoId: string;
-	export let title: string;
+	interface Props {
+		videoId: string;
+		title: string;
+	}
 
-	let activated = false;
+	let { videoId, title }: Props = $props();
+
+	let activated = $state(false);
 
 	function activate() {
 		activated = true;
 	}
 
-	$: thumbUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-	$: embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+	let thumbUrl = $derived(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+	let embedUrl = $derived(`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`);
 </script>
 
 <div class="lite-yt" class:activated>
@@ -21,9 +25,9 @@
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen
-		/>
+		></iframe>
 	{:else}
-		<button type="button" class="play" aria-label={`動画を再生: ${title}`} on:click={activate}>
+		<button type="button" class="play" aria-label={`動画を再生: ${title}`} onclick={activate}>
 			<img src={thumbUrl} alt="" loading="lazy" decoding="async" />
 			<span class="badge" aria-hidden="true">
 				<svg viewBox="0 0 68 48">

@@ -6,13 +6,15 @@ import SectionAbout from '$lib/sections/SectionAbout.svelte';
 import SectionYouTube from '$lib/sections/SectionYouTube.svelte';
 import SectionBlog from './SectionBlog.svelte';
 
+import type { Component } from 'svelte';
+
 export type Section = {
 	name: string;
 	id: string;
-	component: string;
+	component: Component;
 };
 
-export const SECTIONS = [
+export const SECTIONS: Section[] = [
 	{
 		name: 'ホーム',
 		id: 'home',

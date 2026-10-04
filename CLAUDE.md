@@ -20,7 +20,7 @@ No test suite exists in this repo.
 
 ## Architecture
 
-**Stack:** SvelteKit 1.x (Svelte 4) + TypeScript, Vite, deployed to Cloudflare Pages via `@sveltejs/adapter-cloudflare`. Icons via `unplugin-icons` (svelte compiler) — import from `~icons/...`.
+**Stack:** SvelteKit 2 + Svelte 5 (runes only) + TypeScript, Vite 8, deployed to Cloudflare Pages via `@sveltejs/adapter-cloudflare`. Icons via `unplugin-icons` (svelte compiler) — import from `~icons/...`.
 
 **Path aliases** (defined in `svelte.config.js`, on top of the default `$lib`):
 

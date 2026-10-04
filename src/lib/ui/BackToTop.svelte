@@ -1,12 +1,12 @@
 <script lang="ts">
-	let opacity = 1;
-
 	import { quadInOut } from 'svelte/easing';
 	import RiArrowUpLine from '~icons/ri/arrow-up-line';
+
+	let opacity = $state(1);
 </script>
 
 <svelte:window
-	on:scroll={() => {
+	onscroll={() => {
 		const scroll = window.scrollY;
 		const height = document.body.scrollHeight - window.innerHeight;
 		opacity = quadInOut(scroll / height);
@@ -18,7 +18,7 @@
 	style:opacity
 	style:pointer-events={opacity > 0.1 ? 'auto' : 'none'}
 	title="ページ初頭に戻る"
-	on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+	onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 >
 	<RiArrowUpLine />
 </button>

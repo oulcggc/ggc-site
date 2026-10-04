@@ -7,6 +7,6 @@ export const GET = async (): Promise<Response> => {
 		return json(contents);
 	} catch (e) {
 		console.error(e);
-		throw error(500, 'Unable to fetch contents');
+		error(500, 'Unable to fetch contents');
 	}
 };

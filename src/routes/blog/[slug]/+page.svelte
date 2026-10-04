@@ -1,31 +1,31 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import Avatar from '$lib/ui/Avatar.svelte';
 	import Article from '$lib/ui/blog/Article.svelte';
+	import ArticleShare from '$lib/ui/blog/ArticleShare.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
 	import {
-		SNS,
+		type SNS,
 		createFacebookShareURL,
 		createLineShareURL,
 		createTwitterShareURL
 	} from '$lib/util/sns';
-	import type { PageData } from './$types';
-	import ArticleShare from '$lib/ui/blog/ArticleShare.svelte';
-	import { page } from '$app/stores';
+	import type { PageProps } from './$types';
 
-	export let data: PageData;
+	let { data }: PageProps = $props();
 
-	const article = data.article;
-	console.log('$$props', $$props);
-	console.log('data', data);
+	const article = $derived(data.article);
 
-	const shareLinks = new Map<SNS, string>([
-		[
-			'twitter',
-			createTwitterShareURL($page.url.toString(), `${article.title}\n阪大言語サークルGGC @oulcggc`)
-		],
-		['facebook', createFacebookShareURL($page.url.toString())],
-		['line', createLineShareURL($page.url.toString())]
-	] as [SNS, string][]);
+	const shareLinks = $derived(
+		new Map<SNS, string>([
+			[
+				'twitter',
+				createTwitterShareURL(page.url.href, `${article.title}\n阪大言語サークルGGC @oulcggc`)
+			],
+			['facebook', createFacebookShareURL(page.url.href)],
+			['line', createLineShareURL(page.url.href)]
+		])
+	);
 </script>
 
 <main>
@@ -49,7 +49,7 @@
 	<Article content={article.body} />
 	<div class="tags">
 		{#each article.tags as tag (tag.slug)}
-			<Tag name={tag.name} slug={tag.slug} />
+			<Tag name={tag.name} />
 		{/each}
 	</div>
 </main>

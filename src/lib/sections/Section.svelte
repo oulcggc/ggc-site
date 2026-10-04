@@ -1,42 +1,29 @@
 <script lang="ts">
-	import { inview } from 'svelte-inview';
-	import { getContext, onMount } from 'svelte';
+	import type { Snippet } from 'svelte';
+	import { MediaQuery } from 'svelte/reactivity';
 	import { fly } from 'svelte/transition';
-	import type { Writable } from 'svelte/store';
-	export let id: string;
-	export let style: string | undefined = undefined;
+	import { inview } from 'svelte-inview';
 
-	let inView = false;
+	interface Props {
+		id: string;
+		inView?: boolean;
+		children: Snippet;
+	}
 
-	const register = getContext<() => number>('register');
+	let { id, inView = $bindable(false), children }: Props = $props();
 
-	const inviews = getContext<Writable<boolean[]>>('inviews');
-
-	let index: number;
-
-	onMount(() => {
-		index = register();
-
-		smallScreen = window.innerWidth < 768;
-	});
-
-	let smallScreen = false;
+	const smallScreen = new MediaQuery('(width < 768px)', false);
 </script>
-
-<svelte:window on:resize={() => (smallScreen = window.innerWidth < 768)} />
 
 <section
 	{id}
 	use:inview={{ rootMargin: '-30%' }}
 	class:active={inView}
-	{style}
-	on:inview_enter={() => ($inviews[index] = inView = true)}
-	on:inview_leave={() => ($inviews[index] = inView = false)}
-	on:inview_change={({ detail }) => (inView = detail.inView)}
+	oninview_change={({ detail }) => (inView = detail.inView)}
 >
-	{#if smallScreen || inView}
+	{#if smallScreen.current || inView}
 		<div transition:fly={{ y: -15, duration: 950, opacity: 0.4 }}>
-			<slot />
+			{@render children()}
 		</div>
 	{/if}
 </section>
