@@ -28,6 +28,8 @@ No test suite exists in this repo.
 - `#assets/*` → `src/assets/*`
 - `#data/*` → `src/data/*`
 
+Internal links and fetches go through `resolve()` from `$app/paths`.
+
 **Single-page structure.** `src/routes/+page.svelte` is the home page. The page's content is driven entirely by the `SECTIONS` array in `src/lib/sections/index.ts` — each entry pairs an `id` (used as the anchor link target), a Japanese `name` (shown in nav), and a Svelte `component`. The nav menu, hamburger menu, and main content all iterate over this same array, so adding/removing a section means editing only that file plus creating the section component under `src/lib/sections/`.
 
 **Blog → Newt CMS.** `src/lib/api/newt.ts` exports a `NewtClient` singleton (`client`) plus the `Post`/`Author`/`Tag` content types. It is a vendored/modified port of `newt-client-js`. Two private env vars are required, declared in `src/env.ts` as static (build-time) variables and imported from `$app/env/private`:

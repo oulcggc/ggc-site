@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Post } from '#lib/api/newt.ts';
 	import Avatar from '#lib/ui/Avatar.svelte';
 	import Tag from '#lib/ui/Tag.svelte';
@@ -13,7 +14,7 @@
 <div class="card">
 	<img src={article.coverImage.src} alt={article.coverImage.altText} />
 	<h3>
-		<a href={`/blog/${article.slug}`} class="text">{article.title}</a>
+		<a href={resolve('/blog/[slug]', { slug: article.slug })} class="text">{article.title}</a>
 	</h3>
 	<div class="metadata">
 		<span class="name">{article.author.fullName}</span>

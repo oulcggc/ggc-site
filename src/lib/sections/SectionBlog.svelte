@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Contents, Post } from '#lib/api/newt.ts';
 	import BlogCard from '#lib/ui/blog/BlogCard.svelte';
 	import BlogCardSkeleton from '#lib/ui/blog/BlogCardSkeleton.svelte';
 	import RiArticleLine from '~icons/ri/article-line';
 
 	async function fetchArticles(): Promise<Contents<Post>> {
-		const res = await fetch('/api/blog');
+		const res = await fetch(resolve('/api/blog'));
 		return await res.json();
 	}
 </script>
@@ -28,7 +29,7 @@
 	{/await}
 </div>
 
-<a href="/blog" class="text">
+<a href={resolve('/blog')} class="text">
 	<RiArticleLine height="1.5em" />
 	すべての記事を見る
 </a>

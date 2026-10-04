@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Post } from '#lib/api/newt.ts';
 	import Avatar from '#lib/ui/Avatar.svelte';
 
@@ -12,7 +13,7 @@
 </script>
 
 <div class="card">
-	<a href={`/blog/${article.slug}`}>
+	<a href={resolve('/blog/[slug]', { slug: article.slug })}>
 		<img
 			class="thumbnail"
 			src={article.coverImage.src}
@@ -21,7 +22,7 @@
 		/>
 	</a>
 	<h3>
-		<a href={`/blog/${article.slug}`} class="text" title={article.title}>
+		<a href={resolve('/blog/[slug]', { slug: article.slug })} class="text" title={article.title}>
 			{article.title}
 		</a>
 	</h3>

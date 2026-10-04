@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
 	import GGCLogo from '#assets/ggc_logo_1240x1240.jpg';
 	import HamburgerMenu from '#lib/ui/HamburgerMenu.svelte';
@@ -6,14 +7,14 @@
 	let { children }: { children: Snippet } = $props();
 
 	const LINKS = [
-		{ href: '/', name: 'ホーム' },
-		{ href: '/blog', name: 'ブログ' },
-		{ href: '/#contact', name: 'お問い合わせ' }
+		{ href: resolve('/'), name: 'ホーム' },
+		{ href: resolve('/blog'), name: 'ブログ' },
+		{ href: `${resolve('/')}#contact`, name: 'お問い合わせ' }
 	];
 </script>
 
 <header>
-	<a class="logo" href="/">
+	<a class="logo" href={resolve('/')}>
 		<img src={GGCLogo} alt="GGCロゴ" />
 		<span> 阪大言語サークルGGC </span>
 	</a>
