@@ -27,16 +27,6 @@
 		facility="https://www.osaka-u.ac.jp/ja/guide/campus/projects/minoh/"
 		building="外国学講義棟 5階"
 	/>
-	<PlaceCard
-		id="oumlp"
-		name="OUマルチリンガルプラザ"
-		campus="豊中キャンパス"
-		photo="https://picsum.photos/seed/3/300/200"
-		time="金曜日 12:00–15:00"
-		access="https://plaza.cme.osaka-u.ac.jp/facility/"
-		facility="https://www.cmc.osaka-u.ac.jp/?page_id=2489"
-		building="サイバーメディアセンター 4階"
-	/>
 </div>
 <p class="notice">※いずれも変更の可能性あり</p>
 
