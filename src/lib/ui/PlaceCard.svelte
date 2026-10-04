@@ -1,16 +1,19 @@
 <script lang="ts">
 	import RiMapPin2Line from '~icons/ri/map-pin-2-line';
 	import RiAtLine from '~icons/ri/at-line';
-	export let id: string;
-	export let name: string;
-	export let campus: string;
-	export let photo: string;
-	export let time: string;
-	export let access: string;
-	export let facility: string;
-	export let building: string;
 
-	let photoLink: HTMLAnchorElement;
+	interface Props {
+		id: string;
+		name: string;
+		campus: string;
+		photo: string;
+		time: string;
+		access: string;
+		facility: string;
+		building: string;
+	}
+
+	let { id, name, campus, photo, time, access, facility, building }: Props = $props();
 </script>
 
 <div class="card" {id}>
@@ -24,7 +27,7 @@
 		</a>
 	</p>
 
-	<a href={access} class="photo" bind:this={photoLink} target="_blank">
+	<a href={access} class="photo" target="_blank">
 		<img src={photo} alt="{name}の写真" title="{name}の写真" />
 	</a>
 	<p class="time">{time}</p>

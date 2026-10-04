@@ -4,7 +4,11 @@
 
 	import RiHeart3Line from '~icons/ri/heart-3-line';
 
-	export let article: Post;
+	interface Props {
+		article: Post;
+	}
+
+	let { article }: Props = $props();
 </script>
 
 <div class="card">

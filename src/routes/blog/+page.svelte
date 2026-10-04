@@ -1,11 +1,8 @@
 <script lang="ts">
 	import BlogResult from '$lib/ui/blog/BlogResult.svelte';
+	import type { PageProps } from './$types';
 
-	import type { PageData } from './$types';
-
-	export let data: PageData;
-
-	console.log('data', data);
+	let { data }: PageProps = $props();
 </script>
 
 <main>

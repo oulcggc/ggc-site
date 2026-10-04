@@ -8,7 +8,7 @@
 <table>
 	<thead>
 		<tr>
-			<th />
+			<th></th>
 			<th>月</th>
 			<th>火</th>
 			<th>水</th>
@@ -19,10 +19,10 @@
 	<tbody>
 		<tr>
 			<th>昼</th>
-			<td />
-			<td />
-			<td />
-			<td />
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
 			<td> </td>
 		</tr>
 		<tr>

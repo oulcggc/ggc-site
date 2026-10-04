@@ -1,14 +1,11 @@
 <script lang="ts">
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
-	import SNS_ACCOUNTS from '$data/sns.json';
-
-	let opacity = 1;
-
 	import { quadOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import SNSIcon from '$lib/ui/SNSIcon.svelte';
+	import SNS_ACCOUNTS from '$data/sns.json';
 </script>
 
-<ul class="sns" style:opacity style:pointer-events={opacity > 0.1 ? 'auto' : 'none'}>
+<ul class="sns">
 	{#each SNS_ACCOUNTS as { link, type, name }, i (i)}
 		<li
 			transition:fly|global={{

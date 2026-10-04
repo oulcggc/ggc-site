@@ -3,12 +3,26 @@
 	import RiQuestionLine from '~icons/ri/question-line';
 	import RiTimeLine from '~icons/ri/time-line';
 	import Tooltip from './Tooltip.svelte';
-	export let name: string;
-	export let place: string;
-	export let href: string;
-	export let detail: string;
-	export let time: string;
-	export let color: 'r' | 'g' | 'b';
+
+	interface Props {
+		name: string;
+		place: string;
+		href: string;
+		detail: string;
+		time: string;
+		color: 'r' | 'g' | 'b';
+	}
+
+	let { name, place, href, detail, time, color }: Props = $props();
+
+	function scrollToPlace(event: MouseEvent) {
+		const target = document.querySelector(href);
+		if (!target) return;
+		event.preventDefault();
+		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		const photo = target.querySelector('.photo');
+		if (photo instanceof HTMLAnchorElement) photo.focus();
+	}
 </script>
 
 <div class="event" data-color={color}>
@@ -17,9 +31,11 @@
 			{name}
 		</span>
 		<Tooltip>
-			<button slot="trigger" title="詳細">
-				<RiQuestionLine />
-			</button>
+			{#snippet trigger(attach)}
+				<button {@attach attach} title="詳細">
+					<RiQuestionLine />
+				</button>
+			{/snippet}
 			{detail}
 		</Tooltip>
 	</h3>
@@ -32,22 +48,7 @@
 	<!-- TODO: Same color across PlaceCard -->
 
 	<RiBuilding2Line height="1em" />
-	<a
-		{href}
-		title="活動場所"
-		class="text"
-		on:click|preventDefault={() => {
-			const link = document.querySelector(href);
-			if (link) {
-				link.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				const photo = document.querySelector(href + ' .photo');
-				if (photo && photo instanceof HTMLAnchorElement) {
-					photo.focus();
-				}
-				return false;
-			}
-		}}
-	>
+	<a {href} title="活動場所" class="text" onclick={scrollToPlace}>
 		{place}
 	</a>
 </div>

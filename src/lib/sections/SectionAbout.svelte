@@ -8,7 +8,7 @@
 	<h2>サークル紹介</h2>
 	<p class="tags">
 		{#each KEYWORDS as keyword (keyword)}
-			<Tag name={keyword} slug="" />
+			<Tag name={keyword} />
 		{/each}
 	</p>
 	<p>

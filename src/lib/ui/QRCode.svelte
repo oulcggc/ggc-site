@@ -1,7 +1,11 @@
 <script lang="ts">
 	import QRCode from 'qrcode';
 
-	export let text: string;
+	interface Props {
+		text: string;
+	}
+
+	let { text }: Props = $props();
 </script>
 
 {#await QRCode.toDataURL(text, { errorCorrectionLevel: 'H', margin: 2, width: 205 }) then src}

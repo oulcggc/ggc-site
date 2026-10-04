@@ -64,24 +64,19 @@
 	}
 
 	function makeInitial(): BubbleState[] {
-		const used = new Set<Lang>();
 		const out: BubbleState[] = [];
 		for (let i = 0; i < MAX_BUBBLE_COUNT; i++) {
-			const b = makeBubble(used);
-			used.add(b.lang);
-			out.push(b);
+			out.push(makeBubble(new Set(out.map((b) => b.lang))));
 		}
 		return out;
 	}
 
-	let bubbles: BubbleState[] = makeInitial();
+	let bubbles: BubbleState[] = $state(makeInitial());
 
 	function refresh(i: number) {
 		// Defer to the next frame so we don't destroy the element mid-event.
 		requestAnimationFrame(() => {
-			const used = new Set(bubbles.map((b) => b.lang));
-			used.delete(bubbles[i].lang);
-			const next = makeBubble(used);
+			const next = makeBubble(new Set(bubbles.filter((_, j) => j !== i).map((b) => b.lang)));
 			// Reset the delay so refreshed bubbles start immediately.
 			next.delay = '0s';
 			bubbles[i] = next;
@@ -105,7 +100,7 @@
 			style:animation-duration={bubble.duration}
 			style:animation-delay={bubble.delay}
 			style:animation-timing-function="ease-in-out"
-			on:animationend={() => refresh(i)}
+			onanimationend={() => refresh(i)}
 		>
 			{bubble.text}
 		</a>

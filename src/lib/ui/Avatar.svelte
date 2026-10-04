@@ -1,9 +1,13 @@
 <script lang="ts">
 	import AvatarPlaceholder from '$assets/AvatarPlaceholder.svelte';
 	import type { Author } from '$lib/api/newt';
-	export let author: Author;
 
-	export let size: 'small' | 'medium' | 'large' = 'large';
+	interface Props {
+		author: Author;
+		size?: 'small' | 'medium' | 'large';
+	}
+
+	let { author, size = 'large' }: Props = $props();
 </script>
 
 <div class="avatar" data-size={size}>

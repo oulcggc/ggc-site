@@ -1,14 +1,13 @@
 <script lang="ts">
+	import { quadInOut } from 'svelte/easing';
 	import SNSIcon from '$lib/ui/SNSIcon.svelte';
 	import SNS_ACCOUNTS from '$data/sns.json';
 
-	let opacity = 1;
-
-	import { quadInOut } from 'svelte/easing';
+	let opacity = $state(1);
 </script>
 
 <svelte:window
-	on:scroll={() => {
+	onscroll={() => {
 		const scroll = window.scrollY;
 		const height = document.body.scrollHeight - window.innerHeight;
 		opacity = quadInOut(1 - scroll / height);
