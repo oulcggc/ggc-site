@@ -1,7 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import { client, type Post } from '$lib/api/newt';
 
-export const GET = async (request: Request): Promise<Response> => {
+export const GET = async (): Promise<Response> => {
 	try {
 		const contents = await client.getContents<Post>({ appUid: 'blog', modelUid: 'article' });
 		return json(contents);

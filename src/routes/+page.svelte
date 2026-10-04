@@ -69,7 +69,7 @@
 
 <main>
 	<Sections bind:inviews>
-		{#each SECTIONS as { id, component }}
+		{#each SECTIONS as { id, component } (id)}
 			<Section {id}>
 				<svelte:component this={component} />
 			</Section>

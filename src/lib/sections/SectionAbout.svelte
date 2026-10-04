@@ -7,7 +7,7 @@
 <div class="about">
 	<h2>サークル紹介</h2>
 	<p class="tags">
-		{#each KEYWORDS as keyword}
+		{#each KEYWORDS as keyword (keyword)}
 			<Tag name={keyword} slug="" />
 		{/each}
 	</p>

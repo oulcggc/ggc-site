@@ -1,7 +1,6 @@
 <script lang="ts">
 	import RiMapPin2Line from '~icons/ri/map-pin-2-line';
 	import RiAtLine from '~icons/ri/at-line';
-	import { onMount } from 'svelte';
 	export let id: string;
 	export let name: string;
 	export let campus: string;

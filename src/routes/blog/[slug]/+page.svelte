@@ -48,7 +48,7 @@
 	<ArticleShare links={shareLinks} />
 	<Article content={article.body} />
 	<div class="tags">
-		{#each article.tags as tag}
+		{#each article.tags as tag (tag.slug)}
 			<Tag name={tag.name} slug={tag.slug} />
 		{/each}
 	</div>

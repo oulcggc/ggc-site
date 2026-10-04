@@ -23,8 +23,7 @@
 			<td />
 			<td />
 			<td />
-			<td>
-			</td>
+			<td> </td>
 		</tr>
 		<tr>
 			<th>夜</th>

@@ -18,11 +18,11 @@
 <h3>最新記事</h3>
 <div class="cards">
 	{#await fetchArticles()}
-		{#each Array(3) as _}
+		{#each [0, 1, 2] as i (i)}
 			<BlogCardSkeleton />
 		{/each}
 	{:then articles}
-		{#each articles.items.slice(0, 3) as article}
+		{#each articles.items.slice(0, 3) as article (article._id)}
 			<BlogCard {article} />
 		{/each}
 	{/await}

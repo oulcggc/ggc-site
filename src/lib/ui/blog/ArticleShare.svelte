@@ -25,7 +25,7 @@
 			<button class="icon" slot="trigger">
 				<RiShareCircleFill height="1em" />
 			</button>
-			{#each links.entries() as [type, url]}
+			{#each links.entries() as [type, url] (type)}
 				<a href={url} title={`${type}でシェア`} target="_blank">
 					<SnsIcon {type} />
 				</a>
@@ -41,7 +41,7 @@
 			</button>
 		</ContextMenu>
 	{:else}
-		{#each links.entries() as [type, url]}
+		{#each links.entries() as [type, url] (type)}
 			<a href={url} title={`${type}でシェア`} target="_blank">
 				<SnsIcon {type} />
 			</a>

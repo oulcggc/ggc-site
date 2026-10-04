@@ -1,6 +1,5 @@
 <script lang="ts">
 	import BlogResult from '$lib/ui/blog/BlogResult.svelte';
-	import RiCopyrightLine from '~icons/ri/copyright-line';
 
 	import type { PageData } from './$types';
 
@@ -10,7 +9,7 @@
 </script>
 
 <main>
-	{#each data.articles.items as article}
+	{#each data.articles.items as article (article._id)}
 		<BlogResult {article} />
 	{/each}
 </main>

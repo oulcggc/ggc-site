@@ -24,7 +24,7 @@
 
 	<div class="info">
 		<h3>連絡先</h3>
-		{#each SNS_ACCOUNTS as { link, type, name }}
+		{#each SNS_ACCOUNTS as { link, type, name } (link)}
 			<a href={link} target="_blank" rel="noopener" class="text">
 				{name}
 				<SNSIcon {type} />

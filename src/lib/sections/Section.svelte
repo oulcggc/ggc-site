@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { inview } from 'svelte-inview';
 	import { getContext, onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import type { Writable } from 'svelte/store';
 	export let id: string;
 	export let style: string | undefined = undefined;
