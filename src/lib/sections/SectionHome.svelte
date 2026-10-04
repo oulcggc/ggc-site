@@ -1,6 +1,6 @@
 <script lang="ts">
-	import GGCLogo from '$assets/ggc_logo_1240x1240.jpg';
-	import LanguageBubbles from '$lib/ui/LanguageBubbles.svelte';
+	import GGCLogo from '#assets/ggc_logo_1240x1240.jpg';
+	import LanguageBubbles from '#lib/ui/LanguageBubbles.svelte';
 </script>
 
 <div class="logo">

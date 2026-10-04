@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { quadInOut } from 'svelte/easing';
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
-	import SNS_ACCOUNTS from '$data/sns.json';
+	import SNSIcon from '#lib/ui/SNSIcon.svelte';
+	import SNS_ACCOUNTS from '#data/sns.json';
 
 	let opacity = $state(1);
 </script>

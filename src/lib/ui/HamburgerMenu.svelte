@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { fly, scale } from 'svelte/transition';
 	import { quadOut } from 'svelte/easing';
-	import SNS_ACCOUNTS from '$data/sns.json';
+	import SNS_ACCOUNTS from '#data/sns.json';
 
 	import { Hamburger } from 'svelte-hamburgers';
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
+	import SNSIcon from '#lib/ui/SNSIcon.svelte';
 
 	interface Props {
 		links?: { href: string; name: string }[];

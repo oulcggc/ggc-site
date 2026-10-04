@@ -1,6 +1,6 @@
 <script lang="ts">
-	import AvatarPlaceholder from '$assets/AvatarPlaceholder.svelte';
-	import type { Author } from '$lib/api/newt';
+	import AvatarPlaceholder from '#assets/AvatarPlaceholder.svelte';
+	import type { Author } from '#lib/api/newt.ts';
 
 	interface Props {
 		author: Author;

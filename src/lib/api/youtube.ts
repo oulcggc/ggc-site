@@ -1,4 +1,4 @@
-import { YOUTUBE_CHANNEL_URL, type Video } from '$data/youtube';
+import { YOUTUBE_CHANNEL_URL, type Video } from '#data/youtube.ts';
 
 let cachedChannelId: string | null = null;
 

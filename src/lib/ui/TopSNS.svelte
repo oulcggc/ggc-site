@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { quadOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
-	import SNSIcon from '$lib/ui/SNSIcon.svelte';
-	import SNS_ACCOUNTS from '$data/sns.json';
+	import SNSIcon from '#lib/ui/SNSIcon.svelte';
+	import SNS_ACCOUNTS from '#data/sns.json';
 </script>
 
 <ul class="sns">

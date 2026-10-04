@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import Avatar from '$lib/ui/Avatar.svelte';
-	import Article from '$lib/ui/blog/Article.svelte';
-	import ArticleShare from '$lib/ui/blog/ArticleShare.svelte';
-	import Tag from '$lib/ui/Tag.svelte';
+	import Avatar from '#lib/ui/Avatar.svelte';
+	import Article from '#lib/ui/blog/Article.svelte';
+	import ArticleShare from '#lib/ui/blog/ArticleShare.svelte';
+	import Tag from '#lib/ui/Tag.svelte';
 	import {
 		type SNS,
 		createFacebookShareURL,
 		createLineShareURL,
 		createTwitterShareURL
-	} from '$lib/util/sns';
+	} from '#lib/util/sns.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();

@@ -1,5 +1,5 @@
 <script>
-	import CalenderEvent from '$lib/ui/CalenderEvent.svelte';
+	import CalenderEvent from '#lib/ui/CalenderEvent.svelte';
 	import RiCalendarTodoFill from '~icons/ri/calendar-todo-fill';
 </script>
 

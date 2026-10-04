@@ -4,7 +4,6 @@ import svelte from 'eslint-plugin-svelte';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
-import svelteConfig from './svelte.config.js';
 
 export default defineConfig(
 	globalIgnores(['build/', '.svelte-kit/', 'package/', '.wrangler/']),
@@ -24,15 +23,8 @@ export default defineConfig(
 			parserOptions: {
 				projectService: true,
 				extraFileExtensions: ['.svelte'],
-				parser: ts.parser,
-				svelteConfig
+				parser: ts.parser
 			}
-		}
-	},
-	{
-		rules: {
-			// resolve() arrives with SvelteKit 2
-			'svelte/no-navigation-without-resolve': 'off'
 		}
 	}
 );

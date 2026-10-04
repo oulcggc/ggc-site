@@ -1,16 +1,15 @@
+import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
-// Unplugin Icons
 import Icons from 'unplugin-icons/vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [
-		sveltekit(),
+		sveltekit({
+			adapter: adapter()
+		}),
 		Icons({
 			compiler: 'svelte'
 		})
-	],
-	ssr: {
-		noExternal: '@vespaiach/axios-fetch-adapter'
-	}
+	]
 });
