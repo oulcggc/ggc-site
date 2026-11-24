@@ -5,7 +5,6 @@ import SectionHome from '#lib/sections/SectionHome.svelte';
 import SectionAbout from '#lib/sections/SectionAbout.svelte';
 import SectionHistory from '#lib/sections/SectionHistory.svelte';
 import SectionYouTube from '#lib/sections/SectionYouTube.svelte';
-import SectionBlog from './SectionBlog.svelte';
 
 import type { Component } from 'svelte';
 
@@ -20,11 +19,6 @@ export const SECTIONS: Section[] = [
 		name: 'ホーム',
 		id: 'home',
 		component: SectionHome
-	},
-	{
-		name: 'ブログ',
-		id: 'blog',
-		component: SectionBlog
 	},
 	{
 		name: '動画',

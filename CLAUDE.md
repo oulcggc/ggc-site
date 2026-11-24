@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-The official site for 阪大言語サークルGGC (Osaka University language circle). Japanese single-page site plus a blog.
+The official site for 阪大言語サークルGGC (Osaka University language circle). Japanese single-page site.
 
 ## Commands
 
@@ -22,7 +22,7 @@ No test suite exists in this repo.
 
 **Stack:** SvelteKit 3 + Svelte 5 (runes only) + TypeScript 6, Vite 8, deployed to Cloudflare Pages via `@sveltejs/adapter-cloudflare`. All SvelteKit options live in the `sveltekit()` plugin call in `vite.config.ts` (there is no `svelte.config.js`). Node 22.17+ is required; `.node-version` pins the Cloudflare build to Node 24. Icons via `unplugin-icons` (svelte compiler) — import from `~icons/...`.
 
-**Imports** use Node subpath imports from `package.json` `imports`, and need the file extension (`#lib/api/newt.ts`, `#lib/ui/Tag.svelte`):
+**Imports** use Node subpath imports from `package.json` `imports`, and need the file extension (`#lib/api/youtube.ts`, `#lib/ui/QRCode.svelte`):
 
 - `#lib/*` → `src/lib/*`
 - `#assets/*` → `src/assets/*`
@@ -32,20 +32,7 @@ Internal links and fetches go through `resolve()` from `$app/paths`.
 
 **Single-page structure.** `src/routes/+page.svelte` is the home page. The page's content is driven entirely by the `SECTIONS` array in `src/lib/sections/index.ts` — each entry pairs an `id` (used as the anchor link target), a Japanese `name` (shown in nav), and a Svelte `component`. The nav menu, hamburger menu, and main content all iterate over this same array, so adding/removing a section means editing only that file plus creating the section component under `src/lib/sections/`.
 
-**Blog → Newt CMS.** `src/lib/api/newt.ts` exports a `NewtClient` singleton (`client`) plus the `Post`/`Author`/`Tag` content types. It is a vendored/modified port of `newt-client-js`. Two private env vars are required, declared in `src/env.ts` as static (build-time) variables and imported from `$app/env/private`:
-
-- `PRIVATE_NEWT_SPACE_UID`
-- `PRIVATE_NEWT_CDN_TOKEN`
-
-The blog data flow is:
-
-- `src/routes/blog/+page.server.ts` — list page, calls `client.getContents<Post>({ appUid: 'blog', modelUid: 'article' })`
-- `src/routes/blog/[slug]/+page.server.ts` — article page, uses `getFirstContent` with a `slug` query
-- `src/routes/api/blog/+server.ts` — JSON endpoint mirroring the list
-
-Without the env vars set, blog routes and the API endpoint will throw on load. All Newt fetches go through `fetchWithRetry` in `src/lib/util/fetch.ts` (3 retries, only retries 429/500).
-
-**YouTube → Data API v3.** `src/lib/api/youtube.ts` reads the channel's uploads playlist (`UU` + the channel ID in `src/data/youtube.ts`) with `PRIVATE_YOUTUBE_API_KEY`, a runtime (non-static) optional env var. Without it the site works and only `/api/youtube` returns 500. `/api/youtube` sets `s-maxage=3600`, so the API sees about one request per hour per edge.
+**YouTube → Data API v3.** `src/lib/api/youtube.ts` reads the channel's uploads playlist (`UU` + the channel ID in `src/data/youtube.ts`) with `PRIVATE_YOUTUBE_API_KEY`, a runtime (non-static) optional env var declared in `src/env.ts`. Without it the site works and only `/api/youtube` returns 500. Browsers cache `/api/youtube` for 5 minutes; Cloudflare does not edge-cache it, so other requests reach the API.
 
 **Static data lives in `src/data/`:**
 
