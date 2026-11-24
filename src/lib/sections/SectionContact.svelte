@@ -18,7 +18,7 @@
 
 		<p>
 			<a href={null} class="text" title="制作中">注意事項(TBD)</a>
-			<a href={null} class="text" title="制作中">会則(TBD)</a>
+			<a href="https://drive.google.com/file/d/1HNt0vSqVyTu6eFzIAI7ykPomB7D8ARjD/view?usp=sharing" class="text" target="_blank" rel="noopener noreferrer">団体規約</a>
 		</p>
 	</div>
 
