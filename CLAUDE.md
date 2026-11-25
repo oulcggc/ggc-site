@@ -32,6 +32,8 @@ Internal links and fetches go through `resolve()` from `$app/paths`.
 
 **Single-page structure.** `src/routes/+page.svelte` is the home page. The page's content is driven entirely by the `SECTIONS` array in `src/lib/sections/index.ts` — each entry pairs an `id` (used as the anchor link target), a Japanese `name` (shown in nav), and a Svelte `component`. The nav menu, hamburger menu, and main content all iterate over this same array, so adding/removing a section means editing only that file plus creating the section component under `src/lib/sections/`.
 
+**YouTube → Data API v3.** `src/lib/api/youtube.ts` reads the channel's uploads playlist (`UU` + the channel ID in `src/data/youtube.ts`) with `PRIVATE_YOUTUBE_API_KEY`, a runtime (non-static) optional env var declared in `src/env.ts`. Without it the site works and only `/api/youtube` returns 500. Browsers cache `/api/youtube` for 5 minutes; Cloudflare does not edge-cache it, so other requests reach the API.
+
 **Static data lives in `src/data/`:**
 
 - `sns.json` — SNS account list, typed via the `SNSAccount`/`SNS` declarations in `src/app.d.ts` and `src/lib/util/sns.ts`
